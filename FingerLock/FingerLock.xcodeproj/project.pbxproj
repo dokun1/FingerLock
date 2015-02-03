@@ -1,0 +1,452 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		501718171A80746500A4F90A /* PasswordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501718161A80746500A4F90A /* PasswordTableViewController.swift */; };
+		501718191A80747E00A4F90A /* PasswordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501718181A80747E00A4F90A /* PasswordDetailViewController.swift */; };
+		5017181B1A80749100A4F90A /* PasswordFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5017181A1A80749100A4F90A /* PasswordFile.swift */; };
+		503AF5A31A7FF88C006BC4BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503AF5A21A7FF88C006BC4BC /* AppDelegate.swift */; };
+		503AF5A81A7FF88C006BC4BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 503AF5A61A7FF88C006BC4BC /* Main.storyboard */; };
+		503AF5AA1A7FF88C006BC4BC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 503AF5A91A7FF88C006BC4BC /* Images.xcassets */; };
+		503AF5AD1A7FF88C006BC4BC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 503AF5AB1A7FF88C006BC4BC /* LaunchScreen.xib */; };
+		503AF5B91A7FF88C006BC4BC /* FingerLockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503AF5B81A7FF88C006BC4BC /* FingerLockTests.swift */; };
+		503AF5C31A7FF908006BC4BC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503AF5C21A7FF908006BC4BC /* Constants.swift */; };
+		503AF5C51A7FFE35006BC4BC /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503AF5C41A7FFE35006BC4BC /* AuthController.swift */; };
+		503AF5C71A7FFF46006BC4BC /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503AF5C61A7FFF46006BC4BC /* LocalAuthentication.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		503AF5B31A7FF88C006BC4BC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 503AF5951A7FF88C006BC4BC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 503AF59C1A7FF88C006BC4BC;
+			remoteInfo = FingerLock;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		501718161A80746500A4F90A /* PasswordTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordTableViewController.swift; sourceTree = "<group>"; };
+		501718181A80747E00A4F90A /* PasswordDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordDetailViewController.swift; sourceTree = "<group>"; };
+		5017181A1A80749100A4F90A /* PasswordFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordFile.swift; sourceTree = "<group>"; };
+		503AF59D1A7FF88C006BC4BC /* FingerLock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FingerLock.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		503AF5A11A7FF88C006BC4BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		503AF5A21A7FF88C006BC4BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		503AF5A71A7FF88C006BC4BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		503AF5A91A7FF88C006BC4BC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		503AF5AC1A7FF88C006BC4BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		503AF5B21A7FF88C006BC4BC /* FingerLockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FingerLockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		503AF5B71A7FF88C006BC4BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		503AF5B81A7FF88C006BC4BC /* FingerLockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerLockTests.swift; sourceTree = "<group>"; };
+		503AF5C21A7FF908006BC4BC /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		503AF5C41A7FFE35006BC4BC /* AuthController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
+		503AF5C61A7FFF46006BC4BC /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		503AF59A1A7FF88C006BC4BC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				503AF5C71A7FFF46006BC4BC /* LocalAuthentication.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		503AF5AF1A7FF88C006BC4BC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5017181C1A80749700A4F90A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				503AF5C41A7FFE35006BC4BC /* AuthController.swift */,
+				501718161A80746500A4F90A /* PasswordTableViewController.swift */,
+				501718181A80747E00A4F90A /* PasswordDetailViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		503AF5941A7FF88C006BC4BC = {
+			isa = PBXGroup;
+			children = (
+				503AF5C61A7FFF46006BC4BC /* LocalAuthentication.framework */,
+				503AF59F1A7FF88C006BC4BC /* FingerLock */,
+				503AF5B51A7FF88C006BC4BC /* FingerLockTests */,
+				503AF59E1A7FF88C006BC4BC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		503AF59E1A7FF88C006BC4BC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				503AF59D1A7FF88C006BC4BC /* FingerLock.app */,
+				503AF5B21A7FF88C006BC4BC /* FingerLockTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		503AF59F1A7FF88C006BC4BC /* FingerLock */ = {
+			isa = PBXGroup;
+			children = (
+				503AF5A21A7FF88C006BC4BC /* AppDelegate.swift */,
+				5017181C1A80749700A4F90A /* Controllers */,
+				5017181A1A80749100A4F90A /* PasswordFile.swift */,
+				503AF5C21A7FF908006BC4BC /* Constants.swift */,
+				503AF5A61A7FF88C006BC4BC /* Main.storyboard */,
+				503AF5A91A7FF88C006BC4BC /* Images.xcassets */,
+				503AF5AB1A7FF88C006BC4BC /* LaunchScreen.xib */,
+				503AF5A01A7FF88C006BC4BC /* Supporting Files */,
+			);
+			path = FingerLock;
+			sourceTree = "<group>";
+		};
+		503AF5A01A7FF88C006BC4BC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				503AF5A11A7FF88C006BC4BC /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		503AF5B51A7FF88C006BC4BC /* FingerLockTests */ = {
+			isa = PBXGroup;
+			children = (
+				503AF5B81A7FF88C006BC4BC /* FingerLockTests.swift */,
+				503AF5B61A7FF88C006BC4BC /* Supporting Files */,
+			);
+			path = FingerLockTests;
+			sourceTree = "<group>";
+		};
+		503AF5B61A7FF88C006BC4BC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				503AF5B71A7FF88C006BC4BC /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		503AF59C1A7FF88C006BC4BC /* FingerLock */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 503AF5BC1A7FF88C006BC4BC /* Build configuration list for PBXNativeTarget "FingerLock" */;
+			buildPhases = (
+				503AF5991A7FF88C006BC4BC /* Sources */,
+				503AF59A1A7FF88C006BC4BC /* Frameworks */,
+				503AF59B1A7FF88C006BC4BC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FingerLock;
+			productName = FingerLock;
+			productReference = 503AF59D1A7FF88C006BC4BC /* FingerLock.app */;
+			productType = "com.apple.product-type.application";
+		};
+		503AF5B11A7FF88C006BC4BC /* FingerLockTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 503AF5BF1A7FF88C006BC4BC /* Build configuration list for PBXNativeTarget "FingerLockTests" */;
+			buildPhases = (
+				503AF5AE1A7FF88C006BC4BC /* Sources */,
+				503AF5AF1A7FF88C006BC4BC /* Frameworks */,
+				503AF5B01A7FF88C006BC4BC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				503AF5B41A7FF88C006BC4BC /* PBXTargetDependency */,
+			);
+			name = FingerLockTests;
+			productName = FingerLockTests;
+			productReference = 503AF5B21A7FF88C006BC4BC /* FingerLockTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		503AF5951A7FF88C006BC4BC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "David Okun, LLC";
+				TargetAttributes = {
+					503AF59C1A7FF88C006BC4BC = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					503AF5B11A7FF88C006BC4BC = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 503AF59C1A7FF88C006BC4BC;
+					};
+				};
+			};
+			buildConfigurationList = 503AF5981A7FF88C006BC4BC /* Build configuration list for PBXProject "FingerLock" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 503AF5941A7FF88C006BC4BC;
+			productRefGroup = 503AF59E1A7FF88C006BC4BC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				503AF59C1A7FF88C006BC4BC /* FingerLock */,
+				503AF5B11A7FF88C006BC4BC /* FingerLockTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		503AF59B1A7FF88C006BC4BC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				503AF5A81A7FF88C006BC4BC /* Main.storyboard in Resources */,
+				503AF5AD1A7FF88C006BC4BC /* LaunchScreen.xib in Resources */,
+				503AF5AA1A7FF88C006BC4BC /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		503AF5B01A7FF88C006BC4BC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		503AF5991A7FF88C006BC4BC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				503AF5C51A7FFE35006BC4BC /* AuthController.swift in Sources */,
+				501718191A80747E00A4F90A /* PasswordDetailViewController.swift in Sources */,
+				503AF5A31A7FF88C006BC4BC /* AppDelegate.swift in Sources */,
+				501718171A80746500A4F90A /* PasswordTableViewController.swift in Sources */,
+				5017181B1A80749100A4F90A /* PasswordFile.swift in Sources */,
+				503AF5C31A7FF908006BC4BC /* Constants.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		503AF5AE1A7FF88C006BC4BC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				503AF5B91A7FF88C006BC4BC /* FingerLockTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		503AF5B41A7FF88C006BC4BC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 503AF59C1A7FF88C006BC4BC /* FingerLock */;
+			targetProxy = 503AF5B31A7FF88C006BC4BC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		503AF5A61A7FF88C006BC4BC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				503AF5A71A7FF88C006BC4BC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		503AF5AB1A7FF88C006BC4BC /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				503AF5AC1A7FF88C006BC4BC /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		503AF5BA1A7FF88C006BC4BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		503AF5BB1A7FF88C006BC4BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		503AF5BD1A7FF88C006BC4BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = FingerLock/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		503AF5BE1A7FF88C006BC4BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = FingerLock/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		503AF5C01A7FF88C006BC4BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = FingerLockTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FingerLock.app/FingerLock";
+			};
+			name = Debug;
+		};
+		503AF5C11A7FF88C006BC4BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = FingerLockTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FingerLock.app/FingerLock";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		503AF5981A7FF88C006BC4BC /* Build configuration list for PBXProject "FingerLock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				503AF5BA1A7FF88C006BC4BC /* Debug */,
+				503AF5BB1A7FF88C006BC4BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		503AF5BC1A7FF88C006BC4BC /* Build configuration list for PBXNativeTarget "FingerLock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				503AF5BD1A7FF88C006BC4BC /* Debug */,
+				503AF5BE1A7FF88C006BC4BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		503AF5BF1A7FF88C006BC4BC /* Build configuration list for PBXNativeTarget "FingerLockTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				503AF5C01A7FF88C006BC4BC /* Debug */,
+				503AF5C11A7FF88C006BC4BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 503AF5951A7FF88C006BC4BC /* Project object */;
+}
