@@ -9,34 +9,48 @@
 import UIKit
 
 class PasswordTableViewController: UITableViewController {
-
+    
+    @IBOutlet weak var addPasswordButton: UIBarButtonItem!
+    
+    var items = [PasswordFile]()
+    
+    required init(coder aDecoder: NSCoder) {
+        items = [PasswordFile]()
+        super.init(coder: aDecoder)
+        loadPasswordFiles()
+    }
+    
+    func loadPasswordFiles() {
+        let path = dataFilePath()
+        
+        if NSFileManager.defaultManager().fileExistsAtPath(path) {
+            if let data = NSData(contentsOfFile: path) {
+                let unarchiver = NSKeyedUnarchiver(forReadingWithData: data)
+                items = unarchiver.decodeObjectForKey("PasswordFiles") as [PasswordFile]
+                unarchiver.finishDecoding()
+            }
+        }
+    }
+    
+    @IBAction func add() {
+        self.performSegueWithIdentifier("passwordDetailSegue", sender: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        tableView.rowHeight = 44
+        title = "Passwords"
     }
 
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
-        return 0
+        return items.count
     }
 
     /*
@@ -76,22 +90,36 @@ class PasswordTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // Override to support conditional rearranging of the table view.
+
     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
         return true
     }
-    */
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "passwordDetailSegue" {
+            let controller = segue.destinationViewController as PasswordDetailTableViewController
+            if sender != nil {
+                controller.isForEditing = true
+            }
+        }
     }
-    */
 
+    func documentsDirectory() -> String {
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true) as [String]
+        return paths[0]
+    }
+    
+    func dataFilePath() -> String {
+        return documentsDirectory().stringByAppendingPathComponent("Passwords.plist")
+    }
+    
+    func saveCheckListItems() {
+        let data = NSMutableData()
+        let archiver = NSKeyedArchiver(forWritingWithMutableData: data)
+        archiver.encodeObject(items, forKey: "PasswordFiles")
+        archiver.finishEncoding()
+        data.writeToFile(dataFilePath(), atomically: true)
+    }
 }

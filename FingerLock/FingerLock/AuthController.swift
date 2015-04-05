@@ -14,6 +14,14 @@ class AuthController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
         authorize()
     }
 
@@ -23,20 +31,29 @@ class AuthController: UIViewController {
 
     func authorize() {
         if canAuthUser() {
-            println("can do boss")
             let context = LAContext()
             var error: NSError?
             [context.evaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, localizedReason: "Authenticate", reply: { (success: Bool, evalPolicyError: NSError?) -> Void in
                 if success {
-                    println("neat")
-                    self.performSegueWithIdentifier("passwordAuthSegue", sender: nil)
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.navigationController?.setNavigationBarHidden(false, animated: true)
+                        self.performSegueWithIdentifier("passwordAuthSegue", sender: nil)
+                    })
                     return
                 } else {
-                    println("uh oh")
+                    
                 }
             })]
         } else {
-            println("no can do boss")
+            let alert = UIAlertController(
+                title: "Incompatible",
+                message: "Sorry, but you need a phone with TouchID to use this app!",
+                preferredStyle: .Alert)
+            
+            let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            alert.addAction(action)
+            
+            self.presentViewController(alert, animated: true, completion: nil)
         }
     }
     

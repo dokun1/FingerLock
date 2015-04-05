@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="z0m-23-JjY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="z0m-23-JjY">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Auth Controller-->
@@ -40,16 +41,16 @@
             </objects>
             <point key="canvasLocation" x="1582" y="-376"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Passwords-->
         <scene sceneID="s3P-sN-jx0">
             <objects>
-                <tableViewController id="0U0-iJ-YOP" sceneMemberID="viewController">
+                <tableViewController id="0U0-iJ-YOP" customClass="PasswordTableViewController" customModule="FingerLock" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="nTU-2g-dVQ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="0oo-3p-bKU" style="IBUITableViewCellStyleDefault" id="PzK-qV-bK8">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="passwordMainIdentifier" textLabel="0oo-3p-bKU" style="IBUITableViewCellStyleDefault" id="PzK-qV-bK8">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PzK-qV-bK8" id="j7d-HE-zVm">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -69,104 +70,144 @@
                             <outlet property="delegate" destination="0U0-iJ-YOP" id="YbZ-TJ-zg7"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Passwords" id="T54-Zm-X6H">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Rm0-o9-AkR">
+                            <connections>
+                                <action selector="add" destination="0U0-iJ-YOP" id="zix-U1-hdO"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="addPasswordButton" destination="Rm0-o9-AkR" id="9aZ-Th-YXo"/>
+                        <segue destination="vNH-2y-d1u" kind="show" identifier="passwordDetailSegue" id="v1l-Oa-RCQ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uVV-Mx-eV7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2384" y="-376"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Password Detail Table View Controller-->
         <scene sceneID="zDz-f9-kw4">
             <objects>
-                <tableViewController id="vNH-2y-d1u" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="1fg-pJ-bxL">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                <tableViewController id="vNH-2y-d1u" customClass="PasswordDetailTableViewController" customModule="FingerLock" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="1fg-pJ-bxL">
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
                             <tableViewSection headerTitle="TITLE" id="yFb-u2-CPZ">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="HqZ-NG-UvQ">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="passwordTitleCell" id="HqZ-NG-UvQ">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HqZ-NG-UvQ" id="Kfe-2J-iZq">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="title here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x0K-gB-eHz">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="title here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x0K-gB-eHz">
                                                     <rect key="frame" x="8" y="0.0" width="584" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="x0K-gB-eHz" firstAttribute="trailing" secondItem="Kfe-2J-iZq" secondAttribute="trailingMargin" id="Gva-qL-9ad"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="x0K-gB-eHz" secondAttribute="bottom" constant="-8.5" id="JU2-3e-tv1"/>
+                                                <constraint firstItem="x0K-gB-eHz" firstAttribute="leading" secondItem="Kfe-2J-iZq" secondAttribute="leadingMargin" id="O6M-sT-kN2"/>
+                                                <constraint firstItem="x0K-gB-eHz" firstAttribute="top" secondItem="Kfe-2J-iZq" secondAttribute="top" id="PAi-v0-ei0"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="USERNAME" id="Jmb-gL-LaM">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Lfp-NK-cQq">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="usernameCell" id="Lfp-NK-cQq">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lfp-NK-cQq" id="HeZ-4n-n4l">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="username here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tv8-Zx-Od2">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="username here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tv8-Zx-Od2">
                                                     <rect key="frame" x="8" y="0.0" width="584" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Tv8-Zx-Od2" firstAttribute="trailing" secondItem="HeZ-4n-n4l" secondAttribute="trailingMargin" id="2OR-Ei-Wcv"/>
+                                                <constraint firstItem="Tv8-Zx-Od2" firstAttribute="top" secondItem="HeZ-4n-n4l" secondAttribute="top" id="GHX-h1-hpc"/>
+                                                <constraint firstItem="Tv8-Zx-Od2" firstAttribute="leading" secondItem="HeZ-4n-n4l" secondAttribute="leadingMargin" id="GkB-1g-AAm"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Tv8-Zx-Od2" secondAttribute="bottom" constant="-8.5" id="aO9-Ki-whF"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="PASSWORD" id="28a-yT-Mwb">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="RlQ-ph-G5U">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="passwordPasswordCell" id="RlQ-ph-G5U">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RlQ-ph-G5U" id="YIP-jO-EID">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M3a-AO-wzb">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M3a-AO-wzb">
                                                     <rect key="frame" x="8" y="0.0" width="584" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="M3a-AO-wzb" secondAttribute="bottom" constant="-8.5" id="CXX-N4-RhT"/>
+                                                <constraint firstItem="M3a-AO-wzb" firstAttribute="leading" secondItem="YIP-jO-EID" secondAttribute="leadingMargin" id="Yms-bE-bO2"/>
+                                                <constraint firstItem="M3a-AO-wzb" firstAttribute="top" secondItem="YIP-jO-EID" secondAttribute="top" id="tUV-xa-o0M"/>
+                                                <constraint firstItem="M3a-AO-wzb" firstAttribute="trailing" secondItem="YIP-jO-EID" secondAttribute="trailingMargin" id="zr3-63-pUT"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="WEBSITE" id="gwn-rW-gFH">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="APR-Sg-srh">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="websiteCell" id="APR-Sg-srh">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="APR-Sg-srh" id="7qv-cR-9nS">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="website here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OUK-rU-6CZ">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="website here (optional)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OUK-rU-6CZ">
                                                     <rect key="frame" x="8" y="0.0" width="584" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="OUK-rU-6CZ" firstAttribute="leading" secondItem="7qv-cR-9nS" secondAttribute="leadingMargin" id="0Fz-TS-jaI"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="OUK-rU-6CZ" secondAttribute="bottom" constant="-8.5" id="Q4o-09-l0m"/>
+                                                <constraint firstItem="OUK-rU-6CZ" firstAttribute="top" secondItem="7qv-cR-9nS" secondAttribute="top" id="Y1L-Xd-qNI"/>
+                                                <constraint firstItem="OUK-rU-6CZ" firstAttribute="trailing" secondItem="7qv-cR-9nS" secondAttribute="trailingMargin" id="dyR-iD-9tt"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="NOTES" id="Toh-kO-VRv">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="104" id="T6b-Nf-tsL">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="notesCell" rowHeight="104" id="T6b-Nf-tsL">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="T6b-Nf-tsL" id="pzk-RI-yaS">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q8R-J0-ykA">
-                                                    <rect key="frame" x="8" y="0.0" width="584" height="103.5"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q8R-J0-ykA">
+                                                    <rect key="frame" x="8" y="0.0" width="584" height="104"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <mutableString key="text">other information here. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="q8R-J0-ykA" firstAttribute="trailing" secondItem="pzk-RI-yaS" secondAttribute="trailingMargin" id="A8U-0u-smY"/>
+                                                <constraint firstItem="q8R-J0-ykA" firstAttribute="leading" secondItem="pzk-RI-yaS" secondAttribute="leadingMargin" id="S9q-mD-siH"/>
+                                                <constraint firstItem="q8R-J0-ykA" firstAttribute="top" secondItem="pzk-RI-yaS" secondAttribute="top" id="Yd6-fq-0YE"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="q8R-J0-ykA" secondAttribute="bottom" constant="-8.5" id="hl2-Wa-PHZ"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -177,6 +218,20 @@
                             <outlet property="delegate" destination="vNH-2y-d1u" id="Ls0-CI-f0Q"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="3PZ-2e-u7p">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Njt-fw-asx">
+                            <connections>
+                                <action selector="savePassword" destination="vNH-2y-d1u" id="QAE-n3-W0Y"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="notesView" destination="q8R-J0-ykA" id="Owv-60-ITl"/>
+                        <outlet property="passwordField" destination="M3a-AO-wzb" id="NI5-bo-Vhq"/>
+                        <outlet property="titleField" destination="x0K-gB-eHz" id="3gr-8O-RJM"/>
+                        <outlet property="usernameField" destination="Tv8-Zx-Od2" id="1oA-qr-qZk"/>
+                        <outlet property="websiteField" destination="OUK-rU-6CZ" id="IIy-po-QHs"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hCT-X1-B6O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

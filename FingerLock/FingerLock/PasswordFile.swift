@@ -14,6 +14,7 @@ class PasswordFile: NSObject {
     var password  = ""
     var website = ""
     var notes = ""
+    var fileID = ""
     
     override init() {
         super.init()
@@ -25,6 +26,7 @@ class PasswordFile: NSObject {
         password = aDecoder.decodeObjectForKey("Password") as String
         website = aDecoder.decodeObjectForKey("Website") as String
         notes = aDecoder.decodeObjectForKey("Notes") as String
+        fileID = aDecoder.decodeObjectForKey("FileID") as String
         super.init()
     }
     
@@ -34,5 +36,6 @@ class PasswordFile: NSObject {
         aCoder.encodeObject(password, forKey:"Password")
         aCoder.encodeObject(website, forKey:"Website")
         aCoder.encodeObject(notes, forKey:"Notes")
+        aCoder.encodeObject(fileID, forKey:"FileID")
     }
 }
