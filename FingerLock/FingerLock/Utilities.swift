@@ -36,22 +36,4 @@ class Utilities {
             return randomString
         }
     }
-    
-    class func displaySignUpPendingAlert(controller: UIViewController) -> UIAlertController {
-        //create an alert controller
-        let pending = UIAlertController(title: "Creating New User", message: nil, preferredStyle: .Alert)
-        
-        //create an activity indicator
-        let indicator = UIActivityIndicatorView(frame: pending.view.bounds)
-        indicator.autoresizingMask = .FlexibleWidth | .FlexibleHeight
-        
-        //add the activity indicator as a subview of the alert controller's view
-        pending.view.addSubview(indicator)
-        indicator.userInteractionEnabled = false // required otherwise if there buttons in the UIAlertController you will not be able to press them
-        indicator.startAnimating()
-        
-        controller.presentViewController(pending, animated: true, completion: nil)
-        
-        return pending
-    }
 }
