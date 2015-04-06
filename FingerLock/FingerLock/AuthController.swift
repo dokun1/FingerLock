@@ -35,9 +35,13 @@ class AuthController: UIViewController {
             var error: NSError?
             [context.evaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, localizedReason: "Authenticate", reply: { (success: Bool, evalPolicyError: NSError?) -> Void in
                 if success {
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.performSegueWithIdentifier("passwordAuthSegue", sender: nil)
-                    })
+                    if NSUserDefaults.standardUserDefaults().boolForKey("firstTime") == false {
+                        self.setThingsUp()
+                    } else {
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            self.self.moveToPasswords()
+                        })
+                    }
                     return
                 } else {
                     
@@ -54,6 +58,29 @@ class AuthController: UIViewController {
             
             self.presentViewController(alert, animated: true, completion: nil)
         }
+    }
+    
+    func setThingsUp() {
+        if NSUserDefaults.standardUserDefaults().boolForKey("firstTime") == false {
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "firstTime")
+            NSUserDefaults.standardUserDefaults().synchronize()
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                let alert = UIAlertController(title: nil, message: "Setting up encryption. Please wait...", preferredStyle:.Alert)
+                self.presentViewController(alert, animated: true, completion: nil)
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), { () -> Void in
+                    Encryptor().setUp({ (result) -> Void in
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            self.moveToPasswords()
+                        })
+                    })
+                })
+            })
+
+        }
+    }
+    
+    func moveToPasswords() {
+        self.performSegueWithIdentifier("passwordAuthSegue", sender: nil)
     }
     
     func canAuthUser() -> Bool {

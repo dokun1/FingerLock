@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PasswordFile: NSObject {
+class PasswordFile: NSObject, Printable {
     var title = ""
     var username = ""
     var password  = ""

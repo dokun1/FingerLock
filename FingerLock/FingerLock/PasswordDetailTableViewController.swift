@@ -15,11 +15,11 @@ protocol PasswordDetailViewControllerDelegate: class {
 }
 
 class PasswordDetailTableViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate {
-    
     var isForEditing = false
     var currentFile: PasswordFile!
     
     let dataModel = DataModel()
+    let encryptor = Encryptor()
     
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var usernameField: UITextField!
@@ -34,14 +34,26 @@ class PasswordDetailTableViewController: UITableViewController, UITextFieldDeleg
         super.viewDidLoad()
     }
     
+    func customizeAppearance() {
+        titleField.font = UIFont.boldSystemFontOfSize(14)
+        usernameField.font = UIFont.systemFontOfSize(13)
+        passwordField.font = UIFont.systemFontOfSize(13)
+        websiteField.font = UIFont.systemFontOfSize(13)
+        notesView.font = UIFont.systemFontOfSize(12)
+        
+        let orangeAppColor = UIColor(red:0.91, green:0.44, blue:0.09, alpha:1)
+        removeButton.backgroundColor = orangeAppColor
+        removeButton.titleLabel?.textColor = UIColor.whiteColor()
+    }
+    
     override func viewWillAppear(animated: Bool) {
+        customizeAppearance()
         if isForEditing {
             title = "Edit Password"
             setFields()
         } else {
             title = "Add Password"
             currentFile = PasswordFile()
-            removeButton.enabled = false
         }
     }
     
@@ -62,17 +74,11 @@ class PasswordDetailTableViewController: UITableViewController, UITextFieldDeleg
     }
     
     @IBAction func removeButtonTapped() {
-//        weak var weakSelf = self
-//        let alert = UIAlertController(title: "Warning", message: "Are you sure you want to remove this password? It will be gone forever.", preferredStyle: .Alert)
-//
-//        let deleteAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.Destructive) { (_) -> Void in
-//            delegate?.passwordDetailViewController(self, removedPasswordFile: currentFile)
-//        }
-//        alert.addAction(deleteAction)
-//        let cancelAction = UIAlertAction(title: "No", style: .Cancel, handler: nil)
-//        alert.addAction(cancelAction)
-//        self.presentViewController(alert, animated: true, completion: nil)
-    delegate?.passwordDetailViewController(self, removedPasswordFile: currentFile)
+        if isForEditing == true {
+            delegate?.passwordDetailViewController(self, removedPasswordFile: currentFile)
+        } else {
+            delegate?.passwordDetailViewControllerDidCancel(self)
+        }
     }
     
     func checkFields() -> Bool {
@@ -91,18 +97,18 @@ class PasswordDetailTableViewController: UITableViewController, UITextFieldDeleg
     
     func updateCurrentFile() {
         currentFile.title = titleField.text
-        currentFile.username = usernameField.text
-        currentFile.password = passwordField.text
-        currentFile.website = websiteField.text
-        currentFile.notes = notesView.text
+        currentFile.username = encryptor.getEncryptedString(usernameField.text)
+        currentFile.password = encryptor.getEncryptedString(passwordField.text)
+        currentFile.website = encryptor.getEncryptedString(websiteField.text)
+        currentFile.notes = encryptor.getEncryptedString(notesView.text)
     }
     
     func setFields() {
         titleField.text = currentFile.title
-        usernameField.text = currentFile.username
-        passwordField.text = currentFile.password
-        websiteField.text = currentFile.website
-        notesView.text = currentFile.notes
+        usernameField.text = encryptor.getDecryptedString(currentFile.username)
+        passwordField.text = encryptor.getDecryptedString(currentFile.password)
+        websiteField.text = encryptor.getDecryptedString(currentFile.website)
+        notesView.text = encryptor.getDecryptedString(currentFile.notes)
     }
     
     // MARK: UITextFieldDelegate Methods
@@ -111,9 +117,30 @@ class PasswordDetailTableViewController: UITableViewController, UITextFieldDeleg
         updateCurrentFile()
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField == titleField {
+            usernameField.becomeFirstResponder()
+        } else if textField == usernameField {
+            passwordField.becomeFirstResponder()
+        } else if textField == passwordField {
+            websiteField.becomeFirstResponder()
+        } else if textField == websiteField {
+            notesView.becomeFirstResponder()
+        }
+        return true
+    }
+    
     // MARK: UITextViewDelegate Methods
 
     func textViewDidEndEditing(textView: UITextView) {
         updateCurrentFile()
+    }
+    
+    func textView(textView: UITextView!, shouldChangeTextInRange: NSRange, replacementText: NSString!) -> Bool {
+        if(replacementText == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
     }
 }

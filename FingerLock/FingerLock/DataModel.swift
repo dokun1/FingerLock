@@ -12,10 +12,6 @@ class DataModel {
     let passwordsKey = "FingerLockPasswords"
     let encryptor = Encryptor()
     
-    init() {
-        
-    }
-    
     func documentsDirectory() -> String {
         let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true) as [String]
         return paths[0]
@@ -48,17 +44,6 @@ class DataModel {
             titles.append(file.title)
         }
         return titles
-    }
-    
-    func loadPasswordFileByID(fileID: String) -> PasswordFile? {
-        let allFiles = loadAllPasswords()
-        var returnFile = PasswordFile?()
-        for file in allFiles {
-            if file.fileID == fileID {
-                return file
-            }
-        }
-        return nil
     }
     
     func loadPasswordFileByTitle(title: String) -> PasswordFile? {

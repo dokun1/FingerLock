@@ -202,6 +202,7 @@
 				TargetAttributes = {
 					503AF59C1A7FF88C006BC4BC = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = RQ632LL2X3;
 					};
 					503AF5B11A7FF88C006BC4BC = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -386,9 +387,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iOS Development: David Okun (ATL9M5R398)";
 				INFOPLIST_FILE = FingerLock/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "fb8bec53-abfd-4a0a-b164-3136652d23d9";
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -396,9 +401,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iOS Development: David Okun (ATL9M5R398)";
 				INFOPLIST_FILE = FingerLock/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "fb8bec53-abfd-4a0a-b164-3136652d23d9";
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};

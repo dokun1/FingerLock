@@ -50,6 +50,7 @@ class PasswordTableViewController: UITableViewController, PasswordDetailViewCont
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("passwordMainIdentifier", forIndexPath: indexPath) as UITableViewCell
         cell.textLabel?.text = fileTitles[indexPath.row]
+        cell.textLabel?.font = UIFont.boldSystemFontOfSize(17)
 
         return cell
     }
