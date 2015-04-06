@@ -8,12 +8,11 @@
 
 import UIKit
 
-class DataModel: NSObject {
-    let passwordsKey = "Passwords"
+class DataModel {
+    let passwordsKey = "FingerLockPasswords"
     
-    override init() {
-        super.init()
-        let allfiles = loadAllPasswords()
+    init() {
+        
     }
     
     func documentsDirectory() -> String {
@@ -22,7 +21,7 @@ class DataModel: NSObject {
     }
     
     func dataFilePath() -> String {
-        return documentsDirectory().stringByAppendingPathComponent("Passwords.plist")
+        return documentsDirectory().stringByAppendingPathComponent("FingerLockPasswords.plist")
     }
     
     func loadAllPasswords() -> [PasswordFile] {
@@ -32,15 +31,44 @@ class DataModel: NSObject {
                 let unarchiver = NSKeyedUnarchiver(forReadingWithData: data)
                 let passwordFiles = unarchiver.decodeObjectForKey(passwordsKey) as [PasswordFile]
                 unarchiver.finishDecoding()
-                return passwordFiles
+                let sortedFiles = sortPasswordFiles(passwordFiles)
+                return sortedFiles
             }
+        } else {
+            saveAllPasswords([])
         }
         return []
     }
     
-    func loadPasswordFileByID(fileID: String) -> PasswordFile {
+    func loadAllTitles() -> [String] {
+        let passwordFiles = loadAllPasswords()
+        var titles = [String]()
+        for file in passwordFiles {
+            titles.append(file.title)
+        }
+        return titles
+    }
+    
+    func loadPasswordFileByID(fileID: String) -> PasswordFile? {
         let allFiles = loadAllPasswords()
-        
+        var returnFile = PasswordFile?()
+        for file in allFiles {
+            if file.fileID == fileID {
+                return file
+            }
+        }
+        return nil
+    }
+    
+    func loadPasswordFileByTitle(title: String) -> PasswordFile? {
+        let allFiles = loadAllPasswords()
+        var returnFile = PasswordFile?()
+        for file in allFiles {
+            if file.title == title {
+                return file
+            }
+        }
+        return nil
     }
     
     func saveAllPasswords(allFiles: [PasswordFile]) {
@@ -49,6 +77,37 @@ class DataModel: NSObject {
         archiver.encodeObject(allFiles, forKey: passwordsKey)
         archiver.finishEncoding()
         data.writeToFile(dataFilePath(), atomically: true)
+    }
+    
+    func savePasswordFile(fileToSave: PasswordFile) {
+        var allFiles = loadAllPasswords()
+        if fileToSave.fileID.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()) == "" {
+            fileToSave.fileID = Utilities.generateRandomString()
+            //TODO: this is where you encrypt the strings of the file
+            allFiles.append(fileToSave)
+            saveAllPasswords(allFiles)
+        } else {
+            for (var i = 0; i < allFiles.count; i++) {
+                var thisFile = allFiles[i]
+                if fileToSave.fileID == thisFile.fileID {
+                    allFiles[i] = fileToSave
+                    break
+                }
+            }
+            saveAllPasswords(allFiles)
+        }
+    }
+    
+    func removeFileByTitle(titleToRemove: String) {
+        var allFiles = loadAllPasswords()
+        var newFileArray = [PasswordFile]()
+        var removingFile: PasswordFile?
+        for file in allFiles {
+            if file.title != titleToRemove {
+                newFileArray.append(file)
+            }
+        }
+        saveAllPasswords(newFileArray)
     }
     
     func sortPasswordFiles(allFiles: [PasswordFile]) -> [PasswordFile]{

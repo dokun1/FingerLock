@@ -80,7 +80,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="addPasswordButton" destination="Rm0-o9-AkR" id="9aZ-Th-YXo"/>
-                        <segue destination="vNH-2y-d1u" kind="show" identifier="passwordDetailSegue" id="v1l-Oa-RCQ"/>
+                        <segue destination="Lk5-9L-H94" kind="presentation" identifier="passwordDetailSegue" id="qZY-ZZ-VaL"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uVV-Mx-eV7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -107,6 +107,9 @@
                                                     <rect key="frame" x="8" y="0.0" width="584" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="vNH-2y-d1u" id="3Lh-Nf-0sJ"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -130,6 +133,9 @@
                                                     <rect key="frame" x="8" y="0.0" width="584" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="vNH-2y-d1u" id="tNI-8N-QbD"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -153,6 +159,9 @@
                                                     <rect key="frame" x="8" y="0.0" width="584" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="vNH-2y-d1u" id="Exb-Zy-azV"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -176,6 +185,9 @@
                                                     <rect key="frame" x="8" y="0.0" width="584" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="vNH-2y-d1u" id="hTx-4e-GeU"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -200,6 +212,9 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="vNH-2y-d1u" id="qAR-sI-k41"/>
+                                                    </connections>
                                                 </textView>
                                             </subviews>
                                             <constraints>
@@ -212,6 +227,33 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="    " id="Vva-Ue-O7c">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="removeButtonCell" rowHeight="46" id="KSj-4J-n1R">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KSj-4J-n1R" id="CPU-MW-k7P">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cPx-m1-51D">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="46"/>
+                                                    <state key="normal" title="Remove Password">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="removeButtonTapped" destination="vNH-2y-d1u" eventType="touchUpInside" id="lWB-hL-RAk"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="cPx-m1-51D" secondAttribute="trailing" id="CAI-7L-178"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="cPx-m1-51D" secondAttribute="bottom" constant="-8.5" id="TWd-mA-kuA"/>
+                                                <constraint firstItem="cPx-m1-51D" firstAttribute="top" secondItem="CPU-MW-k7P" secondAttribute="top" id="cah-Bd-MvM"/>
+                                                <constraint firstItem="cPx-m1-51D" firstAttribute="leading" secondItem="CPU-MW-k7P" secondAttribute="leading" id="mM5-MP-nL3"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="vNH-2y-d1u" id="iJo-Rq-Mnf"/>
@@ -219,15 +261,22 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="3PZ-2e-u7p">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="p1G-Yp-P42">
+                            <connections>
+                                <action selector="cancelButtonTapped" destination="vNH-2y-d1u" id="ZbB-po-SYP"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="Njt-fw-asx">
                             <connections>
                                 <action selector="savePassword" destination="vNH-2y-d1u" id="QAE-n3-W0Y"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="notesView" destination="q8R-J0-ykA" id="Owv-60-ITl"/>
                         <outlet property="passwordField" destination="M3a-AO-wzb" id="NI5-bo-Vhq"/>
+                        <outlet property="removeButton" destination="cPx-m1-51D" id="mLb-3w-xOL"/>
                         <outlet property="titleField" destination="x0K-gB-eHz" id="3gr-8O-RJM"/>
                         <outlet property="usernameField" destination="Tv8-Zx-Od2" id="1oA-qr-qZk"/>
                         <outlet property="websiteField" destination="OUK-rU-6CZ" id="IIy-po-QHs"/>
@@ -235,7 +284,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hCT-X1-B6O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3157" y="-376"/>
+            <point key="canvasLocation" x="4180" y="-376"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pMj-2R-VTx">
@@ -254,6 +303,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oVW-s3-wSL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="819" y="-376"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="QcT-VP-yqk">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Lk5-9L-H94" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0D8-vH-E01">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vNH-2y-d1u" kind="relationship" relationship="rootViewController" id="GVQ-By-5An"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nkh-Dt-yM3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3230" y="-376"/>
         </scene>
     </scenes>
     <resources>

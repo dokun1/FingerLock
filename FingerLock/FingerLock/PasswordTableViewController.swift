@@ -8,39 +8,33 @@
 
 import UIKit
 
-class PasswordTableViewController: UITableViewController {
+class PasswordTableViewController: UITableViewController, PasswordDetailViewControllerDelegate {
+    let detailSegueIdentifier = "passwordDetailSegue"
     
     @IBOutlet weak var addPasswordButton: UIBarButtonItem!
     
-    var items = [PasswordFile]()
+    var fileTitles = [String]()
+    let dataModel = DataModel()
     
     required init(coder aDecoder: NSCoder) {
-        items = [PasswordFile]()
         super.init(coder: aDecoder)
-        loadPasswordFiles()
-    }
-    
-    func loadPasswordFiles() {
-        let path = dataFilePath()
-        
-        if NSFileManager.defaultManager().fileExistsAtPath(path) {
-            if let data = NSData(contentsOfFile: path) {
-                let unarchiver = NSKeyedUnarchiver(forReadingWithData: data)
-                items = unarchiver.decodeObjectForKey("PasswordFiles") as [PasswordFile]
-                unarchiver.finishDecoding()
-            }
-        }
+        fileTitles = dataModel.loadAllTitles()
     }
     
     @IBAction func add() {
-        self.performSegueWithIdentifier("passwordDetailSegue", sender: nil)
+        self.performSegueWithIdentifier(detailSegueIdentifier, sender: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.rowHeight = 44
-        title = "Passwords"
+//        title = "Passwords"
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
 
     // MARK: - Table view data source
@@ -50,76 +44,68 @@ class PasswordTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return fileTitles.count
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCellWithIdentifier("passwordMainIdentifier", forIndexPath: indexPath) as UITableViewCell
+        cell.textLabel?.text = fileTitles[indexPath.row]
 
         return cell
     }
-    */
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let selectedFile = dataModel.loadPasswordFileByTitle(fileTitles[indexPath.row])
+        performSegueWithIdentifier(detailSegueIdentifier, sender: selectedFile)
+    }
 
-    /*
-    // Override to support conditional editing of the table view.
+
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
         return true
     }
-    */
 
-    /*
-    // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            // Delete the row from the data source
+            let removeTitle = fileTitles[indexPath.row]
+            dataModel.removeFileByTitle(removeTitle)
+            fileTitles = dataModel.loadAllTitles()
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
+        }
     }
 
     // MARK: - Navigation
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "passwordDetailSegue" {
-            let controller = segue.destinationViewController as PasswordDetailTableViewController
+            let navController = segue.destinationViewController as UINavigationController
+            let controller = navController.viewControllers.first as PasswordDetailTableViewController
+            controller.delegate = self
             if sender != nil {
                 controller.isForEditing = true
+                let existingFile = sender as PasswordFile
+                controller.currentFile = existingFile
             }
         }
     }
-
-    func documentsDirectory() -> String {
-        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true) as [String]
-        return paths[0]
+    
+    // MARK: - PasswordDetailViewControllerDelegate Methods
+    
+    func passwordDetailViewControllerDidCancel(controller: PasswordDetailTableViewController) {
+        controller.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func dataFilePath() -> String {
-        return documentsDirectory().stringByAppendingPathComponent("Passwords.plist")
+    func passwordDetailViewController(controller: PasswordDetailTableViewController, updatedPasswordFile passwordFile: PasswordFile) {
+        dataModel.savePasswordFile(passwordFile)
+        fileTitles = dataModel.loadAllTitles()
+        tableView.reloadData()
+        controller.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func saveCheckListItems() {
-        let data = NSMutableData()
-        let archiver = NSKeyedArchiver(forWritingWithMutableData: data)
-        archiver.encodeObject(items, forKey: "PasswordFiles")
-        archiver.finishEncoding()
-        data.writeToFile(dataFilePath(), atomically: true)
+    func passwordDetailViewController(controller: PasswordDetailTableViewController, removedPasswordFile passwordFile: PasswordFile) {
+        dataModel.removeFileByTitle(passwordFile.title)
+        fileTitles = dataModel.loadAllTitles()
+        tableView.reloadData()
+        controller.dismissViewControllerAnimated(true, completion: nil)
     }
 }

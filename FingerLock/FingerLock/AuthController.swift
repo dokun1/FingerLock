@@ -36,7 +36,6 @@ class AuthController: UIViewController {
             [context.evaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, localizedReason: "Authenticate", reply: { (success: Bool, evalPolicyError: NSError?) -> Void in
                 if success {
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.navigationController?.setNavigationBarHidden(false, animated: true)
                         self.performSegueWithIdentifier("passwordAuthSegue", sender: nil)
                     })
                     return
