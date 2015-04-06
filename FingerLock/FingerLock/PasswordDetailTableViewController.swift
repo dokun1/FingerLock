@@ -30,22 +30,6 @@ class PasswordDetailTableViewController: UITableViewController, UITextFieldDeleg
     
     weak var delegate: PasswordDetailViewControllerDelegate?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    func customizeAppearance() {
-        titleField.font = UIFont.boldSystemFontOfSize(14)
-        usernameField.font = UIFont.systemFontOfSize(13)
-        passwordField.font = UIFont.systemFontOfSize(13)
-        websiteField.font = UIFont.systemFontOfSize(13)
-        notesView.font = UIFont.systemFontOfSize(12)
-        
-        let orangeAppColor = UIColor(red:0.91, green:0.44, blue:0.09, alpha:1)
-        removeButton.backgroundColor = orangeAppColor
-        removeButton.titleLabel?.textColor = UIColor.whiteColor()
-    }
-    
     override func viewWillAppear(animated: Bool) {
         customizeAppearance()
         if isForEditing {
@@ -62,7 +46,6 @@ class PasswordDetailTableViewController: UITableViewController, UITextFieldDeleg
             let alert = UIAlertController(title: "Incomplete", message: "Sorry, you need to fill out every field to save this password.", preferredStyle: .Alert)
             let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
             alert.addAction(action)
-            
             self.presentViewController(alert, animated: true, completion: nil)
         } else {
             delegate?.passwordDetailViewController(self, updatedPasswordFile: currentFile)
@@ -75,10 +58,33 @@ class PasswordDetailTableViewController: UITableViewController, UITextFieldDeleg
     
     @IBAction func removeButtonTapped() {
         if isForEditing == true {
-            delegate?.passwordDetailViewController(self, removedPasswordFile: currentFile)
+            let alert = UIAlertController(title: "Warning", message: "Are you sure you want to permanently delete this password?", preferredStyle: .Alert)
+            let cancelAction = UIAlertAction(title: "No", style: .Default, handler: nil)
+            let removeAction = UIAlertAction(title: "Yes", style: .Default) { (_) -> Void in
+                self.attemptRemoval()
+            }
+            alert.addAction(cancelAction)
+            alert.addAction(removeAction)
+            presentViewController(alert, animated: true, completion: nil)
         } else {
             delegate?.passwordDetailViewControllerDidCancel(self)
         }
+    }
+    
+    func attemptRemoval() {
+        delegate?.passwordDetailViewController(self, removedPasswordFile: currentFile)
+    }
+    
+    func customizeAppearance() {
+        titleField.font = UIFont.boldSystemFontOfSize(14)
+        usernameField.font = UIFont.systemFontOfSize(13)
+        passwordField.font = UIFont.systemFontOfSize(13)
+        websiteField.font = UIFont.systemFontOfSize(13)
+        notesView.font = UIFont.systemFontOfSize(12)
+        
+        let orangeAppColor = UIColor(red:0.91, green:0.44, blue:0.09, alpha:1)
+        removeButton.backgroundColor = orangeAppColor
+        removeButton.titleLabel?.textColor = UIColor.whiteColor()
     }
     
     func checkFields() -> Bool {
@@ -95,7 +101,7 @@ class PasswordDetailTableViewController: UITableViewController, UITextFieldDeleg
         return true
     }
     
-    func updateCurrentFile() {
+    func updateCurrentFile() { // I want this to be the only place where the file attributes are shown unencrypted. even floating around in memory, the file types should be encrypted.
         currentFile.title = titleField.text
         currentFile.username = encryptor.getEncryptedString(usernameField.text)
         currentFile.password = encryptor.getEncryptedString(passwordField.text)
@@ -113,7 +119,7 @@ class PasswordDetailTableViewController: UITableViewController, UITextFieldDeleg
     
     // MARK: UITextFieldDelegate Methods
     
-    func textFieldDidEndEditing(textField: UITextField) { // after editing the file, always update the one in memory
+    func textFieldDidEndEditing(textField: UITextField) {
         updateCurrentFile()
     }
     

@@ -67,11 +67,22 @@ class PasswordTableViewController: UITableViewController, PasswordDetailViewCont
 
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            let removeTitle = fileTitles[indexPath.row]
-            dataModel.removeFileByTitle(removeTitle)
-            fileTitles = dataModel.loadAllTitles()
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            let alert = UIAlertController(title: "Warning", message: "Are you sure you want to permanently delete this password?", preferredStyle: .Alert)
+            let cancelAction = UIAlertAction(title: "No", style: .Default, handler: nil)
+            let removeAction = UIAlertAction(title: "Yes", style: .Default, handler: { (_) -> Void in
+                self.removeFileAtIndexPath(indexPath)
+            })
+            alert.addAction(cancelAction)
+            alert.addAction(removeAction)
+            presentViewController(alert, animated: true, completion: nil)
         }
+    }
+    
+    func removeFileAtIndexPath(indexPath: NSIndexPath) {
+        let removeTitle = fileTitles[indexPath.row]
+        dataModel.removeFileByTitle(removeTitle)
+        fileTitles = dataModel.loadAllTitles()
+        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
     }
 
     // MARK: - Navigation
