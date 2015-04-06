@@ -90,6 +90,7 @@
 				503AF59F1A7FF88C006BC4BC /* FingerLock */,
 				503AF5B51A7FF88C006BC4BC /* FingerLockTests */,
 				503AF59E1A7FF88C006BC4BC /* Products */,
+				E365DEC1402D37C46F3A8180 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -143,6 +144,13 @@
 				503AF5B71A7FF88C006BC4BC /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E365DEC1402D37C46F3A8180 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
