@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		501718171A80746500A4F90A /* PasswordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501718161A80746500A4F90A /* PasswordTableViewController.swift */; };
-		501718191A80747E00A4F90A /* PasswordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501718181A80747E00A4F90A /* PasswordDetailViewController.swift */; };
 		5017181B1A80749100A4F90A /* PasswordFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5017181A1A80749100A4F90A /* PasswordFile.swift */; };
+		5017181E1A80798500A4F90A /* Encryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5017181D1A80798500A4F90A /* Encryptor.swift */; };
 		503AF5A31A7FF88C006BC4BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503AF5A21A7FF88C006BC4BC /* AppDelegate.swift */; };
 		503AF5A81A7FF88C006BC4BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 503AF5A61A7FF88C006BC4BC /* Main.storyboard */; };
 		503AF5AA1A7FF88C006BC4BC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 503AF5A91A7FF88C006BC4BC /* Images.xcassets */; };
@@ -18,6 +18,9 @@
 		503AF5C31A7FF908006BC4BC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503AF5C21A7FF908006BC4BC /* Constants.swift */; };
 		503AF5C51A7FFE35006BC4BC /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503AF5C41A7FFE35006BC4BC /* AuthController.swift */; };
 		503AF5C71A7FFF46006BC4BC /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503AF5C61A7FFF46006BC4BC /* LocalAuthentication.framework */; };
+		50BC07FC1AD1523500F231F6 /* PasswordDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BC07FB1AD1523500F231F6 /* PasswordDetailTableViewController.swift */; };
+		50BC07FE1AD15DBA00F231F6 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BC07FD1AD15DBA00F231F6 /* DataModel.swift */; };
+		50BC08001AD1998900F231F6 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BC07FF1AD1998900F231F6 /* Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,8 +35,8 @@
 
 /* Begin PBXFileReference section */
 		501718161A80746500A4F90A /* PasswordTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordTableViewController.swift; sourceTree = "<group>"; };
-		501718181A80747E00A4F90A /* PasswordDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordDetailViewController.swift; sourceTree = "<group>"; };
 		5017181A1A80749100A4F90A /* PasswordFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordFile.swift; sourceTree = "<group>"; };
+		5017181D1A80798500A4F90A /* Encryptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encryptor.swift; sourceTree = "<group>"; };
 		503AF59D1A7FF88C006BC4BC /* FingerLock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FingerLock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		503AF5A11A7FF88C006BC4BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		503AF5A21A7FF88C006BC4BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -46,6 +49,9 @@
 		503AF5C21A7FF908006BC4BC /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		503AF5C41A7FFE35006BC4BC /* AuthController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
 		503AF5C61A7FFF46006BC4BC /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		50BC07FB1AD1523500F231F6 /* PasswordDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordDetailTableViewController.swift; sourceTree = "<group>"; };
+		50BC07FD1AD15DBA00F231F6 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		50BC07FF1AD1998900F231F6 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +78,7 @@
 			children = (
 				503AF5C41A7FFE35006BC4BC /* AuthController.swift */,
 				501718161A80746500A4F90A /* PasswordTableViewController.swift */,
-				501718181A80747E00A4F90A /* PasswordDetailViewController.swift */,
+				50BC07FB1AD1523500F231F6 /* PasswordDetailTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -103,6 +109,9 @@
 				5017181C1A80749700A4F90A /* Controllers */,
 				5017181A1A80749100A4F90A /* PasswordFile.swift */,
 				503AF5C21A7FF908006BC4BC /* Constants.swift */,
+				5017181D1A80798500A4F90A /* Encryptor.swift */,
+				50BC07FD1AD15DBA00F231F6 /* DataModel.swift */,
+				50BC07FF1AD1998900F231F6 /* Utilities.swift */,
 				503AF5A61A7FF88C006BC4BC /* Main.storyboard */,
 				503AF5A91A7FF88C006BC4BC /* Images.xcassets */,
 				503AF5AB1A7FF88C006BC4BC /* LaunchScreen.xib */,
@@ -236,10 +245,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5017181E1A80798500A4F90A /* Encryptor.swift in Sources */,
 				503AF5C51A7FFE35006BC4BC /* AuthController.swift in Sources */,
-				501718191A80747E00A4F90A /* PasswordDetailViewController.swift in Sources */,
+				50BC07FC1AD1523500F231F6 /* PasswordDetailTableViewController.swift in Sources */,
 				503AF5A31A7FF88C006BC4BC /* AppDelegate.swift in Sources */,
 				501718171A80746500A4F90A /* PasswordTableViewController.swift in Sources */,
+				50BC07FE1AD15DBA00F231F6 /* DataModel.swift in Sources */,
+				50BC08001AD1998900F231F6 /* Utilities.swift in Sources */,
 				5017181B1A80749100A4F90A /* PasswordFile.swift in Sources */,
 				503AF5C31A7FF908006BC4BC /* Constants.swift in Sources */,
 			);
