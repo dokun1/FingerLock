@@ -29,7 +29,6 @@ class PasswordTableViewController: UITableViewController, PasswordDetailViewCont
         super.viewDidLoad()
         
         tableView.rowHeight = 44
-//        title = "Passwords"
     }
     
     override func viewWillAppear(animated: Bool) {

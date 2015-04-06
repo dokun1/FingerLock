@@ -10,6 +10,7 @@ import UIKit
 
 class DataModel {
     let passwordsKey = "FingerLockPasswords"
+    let encryptor = Encryptor()
     
     init() {
         
@@ -25,6 +26,7 @@ class DataModel {
     }
     
     func loadAllPasswords() -> [PasswordFile] {
+        encryptor.getCipher()
         let path = dataFilePath()
         if NSFileManager.defaultManager().fileExistsAtPath(path) {
             if let data = NSData(contentsOfFile: path) {
