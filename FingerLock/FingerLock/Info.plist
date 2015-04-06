@@ -28,13 +28,6 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
-	<key>UIAppFonts</key>
-	<array>
-		<string>SystemSanFranciscoDisplayBold.ttf</string>
-		<string>SystemSanFranciscoDisplayMedium.ttf</string>
-		<string>SystemSanFranciscoDisplayRegular.ttf</string>
-		<string>SystemSanFranciscoDisplayThin.ttf</string>
-	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
