@@ -26,7 +26,6 @@ class DataModel {
     }
     
     func loadAllPasswords() -> [PasswordFile] {
-        encryptor.getCipher()
         let path = dataFilePath()
         if NSFileManager.defaultManager().fileExistsAtPath(path) {
             if let data = NSData(contentsOfFile: path) {
@@ -84,7 +83,7 @@ class DataModel {
     func savePasswordFile(fileToSave: PasswordFile) {
         var allFiles = loadAllPasswords()
         if fileToSave.fileID.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()) == "" {
-            fileToSave.fileID = Utilities.generateRandomString()
+            fileToSave.fileID = Utilities.generateRandomStringOfLength(12)
             //TODO: this is where you encrypt the strings of the file
             allFiles.append(fileToSave)
             saveAllPasswords(allFiles)
