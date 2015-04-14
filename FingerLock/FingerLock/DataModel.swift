@@ -69,7 +69,6 @@ class DataModel {
         var allFiles = loadAllPasswords()
         if fileToSave.fileID.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()) == "" {
             fileToSave.fileID = Utilities.generateRandomStringOfLength(12)
-            //TODO: this is where you encrypt the strings of the file
             allFiles.append(fileToSave)
             saveAllPasswords(allFiles)
         } else {

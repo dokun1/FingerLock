@@ -17,6 +17,7 @@ DerivedData
 *.ipa
 *.xcuserstate
 */FingerLock/FingerLock/Encryptor.swift
+*/FingerLock/Crashlytics.framework
 
 # CocoaPods
 #
