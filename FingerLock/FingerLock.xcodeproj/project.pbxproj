@@ -20,6 +20,7 @@
 		50BC07FC1AD1523500F231F6 /* PasswordDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BC07FB1AD1523500F231F6 /* PasswordDetailTableViewController.swift */; };
 		50BC07FE1AD15DBA00F231F6 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BC07FD1AD15DBA00F231F6 /* DataModel.swift */; };
 		50BC08001AD1998900F231F6 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BC07FF1AD1998900F231F6 /* Utilities.swift */; };
+		50BC080E1AD31C2B00F231F6 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50BC080D1AD31C2B00F231F6 /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		50BC07FB1AD1523500F231F6 /* PasswordDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordDetailTableViewController.swift; sourceTree = "<group>"; };
 		50BC07FD1AD15DBA00F231F6 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		50BC07FF1AD1998900F231F6 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		50BC080D1AD31C2B00F231F6 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50BC080E1AD31C2B00F231F6 /* Crashlytics.framework in Frameworks */,
 				503AF5C71A7FFF46006BC4BC /* LocalAuthentication.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -85,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				503AF5C61A7FFF46006BC4BC /* LocalAuthentication.framework */,
+				50BC080D1AD31C2B00F231F6 /* Crashlytics.framework */,
 				503AF59F1A7FF88C006BC4BC /* FingerLock */,
 				503AF5B51A7FF88C006BC4BC /* FingerLockTests */,
 				503AF59E1A7FF88C006BC4BC /* Products */,
@@ -160,6 +164,7 @@
 				503AF5991A7FF88C006BC4BC /* Sources */,
 				503AF59A1A7FF88C006BC4BC /* Frameworks */,
 				503AF59B1A7FF88C006BC4BC /* Resources */,
+				50BC080C1AD31C1100F231F6 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -245,6 +250,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		50BC080C1AD31C1100F231F6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 2562e5594f3c583624c29c6db146c9e585d7d2f2 bdb84a1487ff7e6b043dfe0c95f1349b224067a46e178a036f75d46878f27fee";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		503AF5991A7FF88C006BC4BC /* Sources */ = {
@@ -383,12 +404,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iOS Development: David Okun (ATL9M5R398)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: David Okun (RQ632LL2X3)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = FingerLock/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "fb8bec53-abfd-4a0a-b164-3136652d23d9";
+				PROVISIONING_PROFILE = "e05b3639-b1be-4854-94f6-fb93e891a987";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -397,12 +422,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iOS Development: David Okun (ATL9M5R398)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: David Okun (RQ632LL2X3)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = FingerLock/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "fb8bec53-abfd-4a0a-b164-3136652d23d9";
+				PROVISIONING_PROFILE = "e05b3639-b1be-4854-94f6-fb93e891a987";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
