@@ -36,7 +36,7 @@ class AuthController: UIViewController {
             [context.evaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, localizedReason: "Authenticate", reply: { (success: Bool, evalPolicyError: NSError?) -> Void in
                 if success {
                     if NSUserDefaults.standardUserDefaults().boolForKey("firstTime") == false {
-                        self.setThingsUp()
+                        self.firstTimeSetup()
                     } else {
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                             self.self.moveToPasswords()
@@ -60,7 +60,7 @@ class AuthController: UIViewController {
         }
     }
     
-    func setThingsUp() {
+    func firstTimeSetup() {
         NSUserDefaults.standardUserDefaults().setBool(true, forKey: "firstTime")
         NSUserDefaults.standardUserDefaults().synchronize()
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
