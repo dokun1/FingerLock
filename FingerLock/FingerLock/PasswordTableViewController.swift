@@ -27,7 +27,6 @@ class PasswordTableViewController: UITableViewController, PasswordDetailViewCont
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableView.rowHeight = 44
     }
     
