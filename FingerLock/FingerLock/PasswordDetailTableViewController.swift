@@ -142,8 +142,8 @@ class PasswordDetailTableViewController: UITableViewController, UITextFieldDeleg
         updateCurrentFile()
     }
     
-    func textView(textView: UITextView!, shouldChangeTextInRange: NSRange, replacementText: NSString!) -> Bool {
-        if(replacementText == "\n") {
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
             textView.resignFirstResponder()
             return false
         }

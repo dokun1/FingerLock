@@ -48,7 +48,7 @@ class PasswordTableViewController: UITableViewController, PasswordDetailViewCont
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("passwordMainIdentifier", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("passwordMainIdentifier", forIndexPath: indexPath) as! UITableViewCell
         cell.textLabel?.text = fileTitles[indexPath.row]
         cell.textLabel?.font = UIFont.boldSystemFontOfSize(17)
 
@@ -89,12 +89,12 @@ class PasswordTableViewController: UITableViewController, PasswordDetailViewCont
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "passwordDetailSegue" {
-            let navController = segue.destinationViewController as UINavigationController
-            let controller = navController.viewControllers.first as PasswordDetailTableViewController
+            let navController = segue.destinationViewController as! UINavigationController
+            let controller = navController.viewControllers.first as! PasswordDetailTableViewController
             controller.delegate = self
             if sender != nil {
                 controller.isForEditing = true
-                let existingFile = sender as PasswordFile
+                let existingFile = sender as! PasswordFile
                 controller.currentFile = existingFile
             }
         }
