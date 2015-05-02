@@ -17,6 +17,10 @@
 		503AF5B91A7FF88C006BC4BC /* FingerLockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503AF5B81A7FF88C006BC4BC /* FingerLockTests.swift */; };
 		503AF5C51A7FFE35006BC4BC /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503AF5C41A7FFE35006BC4BC /* AuthController.swift */; };
 		503AF5C71A7FFF46006BC4BC /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503AF5C61A7FFF46006BC4BC /* LocalAuthentication.framework */; };
+		506317371AF4F74800EDB0F5 /* PasswordFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5017181A1A80749100A4F90A /* PasswordFile.swift */; };
+		506317381AF4F74B00EDB0F5 /* Encryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5017181D1A80798500A4F90A /* Encryptor.swift */; };
+		506317391AF4F74E00EDB0F5 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BC07FD1AD15DBA00F231F6 /* DataModel.swift */; };
+		5063173A1AF4F75100EDB0F5 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BC07FF1AD1998900F231F6 /* Utilities.swift */; };
 		50BC07FC1AD1523500F231F6 /* PasswordDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BC07FB1AD1523500F231F6 /* PasswordDetailTableViewController.swift */; };
 		50BC07FE1AD15DBA00F231F6 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BC07FD1AD15DBA00F231F6 /* DataModel.swift */; };
 		50BC08001AD1998900F231F6 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BC07FF1AD1998900F231F6 /* Utilities.swift */; };
@@ -287,6 +291,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				506317371AF4F74800EDB0F5 /* PasswordFile.swift in Sources */,
+				506317391AF4F74E00EDB0F5 /* DataModel.swift in Sources */,
+				506317381AF4F74B00EDB0F5 /* Encryptor.swift in Sources */,
+				5063173A1AF4F75100EDB0F5 /* Utilities.swift in Sources */,
 				503AF5B91A7FF88C006BC4BC /* FingerLockTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
