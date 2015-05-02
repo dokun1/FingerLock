@@ -25,15 +25,16 @@ class Utilities {
         if (usedRandomStrings == nil) {
             stringArray = [String]()
         } else {
-            stringArray = usedRandomStrings? as Array<String>
+            stringArray = usedRandomStrings as! [String]
         }
-        if contains(stringArray, randomString) {
+        let immutableString = randomString as NSString as String
+        if contains(stringArray, immutableString) {
             return generateRandomStringOfLength(length)
         } else {
-            stringArray.append(randomString)
+            stringArray.append(immutableString)
             defaults.setObject(stringArray, forKey: "usedStrings")
             defaults.synchronize()
-            return randomString
+            return immutableString
         }
     }
 }
