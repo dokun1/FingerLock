@@ -11,10 +11,8 @@ import LocalAuthentication
 
 
 class AuthController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+    
+    //MARK: Override functions
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -24,10 +22,8 @@ class AuthController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         authorize()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+    
+    //MARK: Authorization functions
 
     func authorize() {
         if canAuthUser() {
@@ -44,18 +40,13 @@ class AuthController: UIViewController {
                     }
                     return
                 } else {
-                    
+                    let alert = UIAlertController(title: "Error", message: "Could not authenticate your fingerprint. Tap the logo to try again.", preferredStyle: .Alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
                 }
             })]
         } else {
-            let alert = UIAlertController(
-                title: "Incompatible",
-                message: "Sorry, but you need a phone with TouchID to use this app!",
-                preferredStyle: .Alert)
-            
-            let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
-            alert.addAction(action)
-            
+            let alert = UIAlertController(title: "Incompatible", message: "Sorry, but you need a device with TouchID to use this app!", preferredStyle: .Alert)
             self.presentViewController(alert, animated: true, completion: nil)
         }
     }
@@ -89,5 +80,11 @@ class AuthController: UIViewController {
         } else {
             return false
         }
+    }
+    
+    //MARK: IBAction functions
+    
+    @IBAction func logoTapped() {
+        authorize()
     }
 }

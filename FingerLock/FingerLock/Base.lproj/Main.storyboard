@@ -17,12 +17,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LockLogo" translatesAutoresizingMaskIntoConstraints="NO" id="jGC-oR-4Tp">
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LockLogo" translatesAutoresizingMaskIntoConstraints="NO" id="jGC-oR-4Tp">
                                 <rect key="frame" x="218" y="238" width="165" height="123"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="123" id="c1f-hp-IgE"/>
                                     <constraint firstAttribute="width" constant="165" id="kIg-wl-2i3"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="EgV-Zu-Uib" appends="YES" id="qk6-kp-ZTu"/>
+                                </connections>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.51764705879999995" blue="0.0078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -38,6 +42,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="EgV-Zu-Uib">
+                    <connections>
+                        <action selector="logoTapped" destination="BYZ-38-t0r" id="ad1-Gp-TDT"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1582" y="-376"/>
         </scene>
@@ -70,6 +79,7 @@
                             <outlet property="delegate" destination="0U0-iJ-YOP" id="YbZ-TJ-zg7"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Passwords" id="T54-Zm-X6H">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Rm0-o9-AkR">
                             <connections>
@@ -78,6 +88,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addPasswordButton" destination="Rm0-o9-AkR" id="9aZ-Th-YXo"/>
                         <segue destination="Lk5-9L-H94" kind="presentation" identifier="passwordDetailSegue" id="qZY-ZZ-VaL"/>
