@@ -27,7 +27,6 @@ class PasswordTableViewController: UITableViewController, PasswordDetailViewCont
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableView.rowHeight = 44
     }
     
@@ -48,7 +47,7 @@ class PasswordTableViewController: UITableViewController, PasswordDetailViewCont
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("passwordMainIdentifier", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("passwordMainIdentifier", forIndexPath: indexPath) as! UITableViewCell
         cell.textLabel?.text = fileTitles[indexPath.row]
         cell.textLabel?.font = UIFont.boldSystemFontOfSize(17)
 
@@ -89,12 +88,12 @@ class PasswordTableViewController: UITableViewController, PasswordDetailViewCont
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "passwordDetailSegue" {
-            let navController = segue.destinationViewController as UINavigationController
-            let controller = navController.viewControllers.first as PasswordDetailTableViewController
+            let navController = segue.destinationViewController as! UINavigationController
+            let controller = navController.viewControllers.first as! PasswordDetailTableViewController
             controller.delegate = self
             if sender != nil {
                 controller.isForEditing = true
-                let existingFile = sender as PasswordFile
+                let existingFile = sender as! PasswordFile
                 controller.currentFile = existingFile
             }
         }
@@ -107,10 +106,16 @@ class PasswordTableViewController: UITableViewController, PasswordDetailViewCont
     }
     
     func passwordDetailViewController(controller: PasswordDetailTableViewController, updatedPasswordFile passwordFile: PasswordFile) {
-        dataModel.savePasswordFile(passwordFile)
-        fileTitles = dataModel.loadAllTitles()
-        tableView.reloadData()
-        controller.dismissViewControllerAnimated(true, completion: nil)
+        if (dataModel.savePasswordFile(passwordFile) == true) {
+            fileTitles = dataModel.loadAllTitles()
+            tableView.reloadData()
+            controller.dismissViewControllerAnimated(true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "Duplicate File", message: "Please use a different title - this one is already being used.", preferredStyle: .Alert)
+            let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            alert.addAction(action)
+            controller.presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
     func passwordDetailViewController(controller: PasswordDetailTableViewController, removedPasswordFile passwordFile: PasswordFile) {

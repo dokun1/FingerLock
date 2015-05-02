@@ -21,12 +21,12 @@ class PasswordFile: NSObject, Printable {
     }
     
     required init(coder aDecoder: NSCoder) {
-        title = aDecoder.decodeObjectForKey("Title") as String
-        username = aDecoder.decodeObjectForKey("Username") as String
-        password = aDecoder.decodeObjectForKey("Password") as String
-        website = aDecoder.decodeObjectForKey("Website") as String
-        notes = aDecoder.decodeObjectForKey("Notes") as String
-        fileID = aDecoder.decodeObjectForKey("FileID") as String
+        title = aDecoder.decodeObjectForKey("Title") as! String
+        username = aDecoder.decodeObjectForKey("Username") as! String
+        password = aDecoder.decodeObjectForKey("Password") as! String
+        website = aDecoder.decodeObjectForKey("Website") as! String
+        notes = aDecoder.decodeObjectForKey("Notes") as! String
+        fileID = aDecoder.decodeObjectForKey("FileID") as! String
         super.init()
     }
     

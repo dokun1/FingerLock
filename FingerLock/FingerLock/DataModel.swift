@@ -13,7 +13,7 @@ class DataModel {
     let encryptor = Encryptor()
     
     func documentsDirectory() -> String {
-        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true) as [String]
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true) as! [String]
         return paths[0]
     }
     
@@ -26,7 +26,7 @@ class DataModel {
         if NSFileManager.defaultManager().fileExistsAtPath(path) {
             if let data = NSData(contentsOfFile: path) {
                 let unarchiver = NSKeyedUnarchiver(forReadingWithData: data)
-                let passwordFiles = unarchiver.decodeObjectForKey(passwordsKey) as [PasswordFile]
+                let passwordFiles = unarchiver.decodeObjectForKey(passwordsKey) as! [PasswordFile]
                 unarchiver.finishDecoding()
                 let sortedFiles = sortPasswordFiles(passwordFiles)
                 return sortedFiles
@@ -65,8 +65,11 @@ class DataModel {
         data.writeToFile(dataFilePath(), atomically: true)
     }
     
-    func savePasswordFile(fileToSave: PasswordFile) {
+    func savePasswordFile(fileToSave: PasswordFile) -> Bool {
         var allFiles = loadAllPasswords()
+        if contains(loadAllTitles(), fileToSave.title) {
+            return false
+        }
         if fileToSave.fileID.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()) == "" {
             fileToSave.fileID = Utilities.generateRandomStringOfLength(12)
             allFiles.append(fileToSave)
@@ -81,6 +84,11 @@ class DataModel {
             }
             saveAllPasswords(allFiles)
         }
+        return true
+    }
+    
+    func removeAllPasswords() {
+        saveAllPasswords([])
     }
     
     func removeFileByTitle(titleToRemove: String) {
