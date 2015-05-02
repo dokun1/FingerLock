@@ -65,8 +65,12 @@ class DataModel {
         data.writeToFile(dataFilePath(), atomically: true)
     }
     
-    func savePasswordFile(fileToSave: PasswordFile) {
+    func savePasswordFile(fileToSave: PasswordFile) -> Bool {
         var allFiles = loadAllPasswords()
+        var allTitles = loadAllTitles()
+        if contains(allTitles, fileToSave.title) {
+            return false
+        }
         if fileToSave.fileID.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()) == "" {
             fileToSave.fileID = Utilities.generateRandomStringOfLength(12)
             allFiles.append(fileToSave)
@@ -81,6 +85,7 @@ class DataModel {
             }
             saveAllPasswords(allFiles)
         }
+        return true
     }
     
     func removeFileByTitle(titleToRemove: String) {
