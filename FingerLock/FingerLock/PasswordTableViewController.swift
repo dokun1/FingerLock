@@ -107,10 +107,16 @@ class PasswordTableViewController: UITableViewController, PasswordDetailViewCont
     }
     
     func passwordDetailViewController(controller: PasswordDetailTableViewController, updatedPasswordFile passwordFile: PasswordFile) {
-        dataModel.savePasswordFile(passwordFile)
-        fileTitles = dataModel.loadAllTitles()
-        tableView.reloadData()
-        controller.dismissViewControllerAnimated(true, completion: nil)
+        if (dataModel.savePasswordFile(passwordFile) == true) {
+            fileTitles = dataModel.loadAllTitles()
+            tableView.reloadData()
+            controller.dismissViewControllerAnimated(true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "Duplicate File", message: "Please use a different title - this one is already being used.", preferredStyle: .Alert)
+            let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            alert.addAction(action)
+            controller.presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
     func passwordDetailViewController(controller: PasswordDetailTableViewController, removedPasswordFile passwordFile: PasswordFile) {
