@@ -105,8 +105,8 @@ class PasswordTableViewController: UITableViewController, PasswordDetailViewCont
         controller.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func passwordDetailViewController(controller: PasswordDetailTableViewController, updatedPasswordFile passwordFile: PasswordFile) {
-        if (dataModel.savePasswordFile(passwordFile) == true) {
+    func passwordDetailViewController(controller: PasswordDetailTableViewController, addedPasswordFile passwordFile: PasswordFile) {
+        if (dataModel.savePasswordFile(passwordFile, canOverwrite: false) == true) {
             fileTitles = dataModel.loadAllTitles()
             tableView.reloadData()
             controller.dismissViewControllerAnimated(true, completion: nil)
@@ -116,6 +116,14 @@ class PasswordTableViewController: UITableViewController, PasswordDetailViewCont
             alert.addAction(action)
             controller.presentViewController(alert, animated: true, completion: nil)
         }
+    }
+    
+    func passwordDetailViewController(controller: PasswordDetailTableViewController, updatedPasswordFile passwordFile: PasswordFile) {
+        dataModel.removeFileByID(passwordFile.fileID)
+        dataModel.savePasswordFile(passwordFile, canOverwrite: true)
+        fileTitles = dataModel.loadAllTitles()
+        tableView.reloadData()
+        controller.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func passwordDetailViewController(controller: PasswordDetailTableViewController, removedPasswordFile passwordFile: PasswordFile) {
