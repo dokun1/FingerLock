@@ -65,26 +65,28 @@ class DataModel {
         data.writeToFile(dataFilePath(), atomically: true)
     }
     
-    func savePasswordFile(fileToSave: PasswordFile) -> Bool {
-        var allFiles = loadAllPasswords()
-        if contains(loadAllTitles(), fileToSave.title) {
-            return false
+    func savePasswordFile(fileToSave: PasswordFile, canOverwrite: Bool) -> Bool {
+        let originalCount = loadAllTitles().count
+        var willOverwrite = false
+        if loadPasswordFileByTitle(fileToSave.title) != nil {
+            if canOverwrite {
+                removeFileByTitle(fileToSave.title)
+                willOverwrite = true
+            } else {
+                return false
+            }
         }
+        var allFiles = loadAllPasswords()
         if fileToSave.fileID.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()) == "" {
             fileToSave.fileID = Utilities.generateRandomStringOfLength(12)
-            allFiles.append(fileToSave)
-            saveAllPasswords(allFiles)
-        } else {
-            for (var i = 0; i < allFiles.count; i++) {
-                var thisFile = allFiles[i]
-                if fileToSave.fileID == thisFile.fileID {
-                    allFiles[i] = fileToSave
-                    break
-                }
-            }
-            saveAllPasswords(allFiles)
         }
-        return true
+        allFiles.append(fileToSave)
+        saveAllPasswords(allFiles)
+        if willOverwrite == false {
+            return originalCount < loadAllTitles().count
+        } else {
+            return originalCount == loadAllTitles().count
+        }
     }
     
     func removeAllPasswords() {
@@ -97,6 +99,18 @@ class DataModel {
         var removingFile: PasswordFile?
         for file in allFiles {
             if file.title != titleToRemove {
+                newFileArray.append(file)
+            }
+        }
+        saveAllPasswords(newFileArray)
+    }
+    
+    func removeFileByID(idToRemove: String) {
+        var allFiles = loadAllPasswords()
+        var newFileArray = [PasswordFile]()
+        var removingFile: PasswordFile?
+        for file in allFiles {
+            if file.fileID != idToRemove {
                 newFileArray.append(file)
             }
         }
