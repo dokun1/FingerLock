@@ -69,9 +69,9 @@ class FingerLockTests: XCTestCase {
     }
     
     func testSavingDuplicateFile() {
-        var firstSave = dataModel.savePasswordFile(testFile)
-        var secondSave = dataModel.savePasswordFile(secondTestFile)
-        var duplicateSave = dataModel.savePasswordFile(duplicateTestFile)
+        var firstSave = dataModel.savePasswordFile(testFile, canOverwrite: false)
+        var secondSave = dataModel.savePasswordFile(secondTestFile, canOverwrite: false)
+        var duplicateSave = dataModel.savePasswordFile(duplicateTestFile, canOverwrite: false)
         
         XCTAssertTrue(firstSave, "could not save the first file")
         XCTAssertTrue(secondSave, "could not save the second file")
@@ -79,8 +79,8 @@ class FingerLockTests: XCTestCase {
     }
     
     func testSavingTwoPasswords() {
-        var firstSave = dataModel.savePasswordFile(testFile)
-        var secondSave = dataModel.savePasswordFile(secondTestFile)
+        var firstSave = dataModel.savePasswordFile(testFile, canOverwrite: false)
+        var secondSave = dataModel.savePasswordFile(secondTestFile, canOverwrite: false)
         
         let passwordArray = dataModel.loadAllPasswords()
         
@@ -88,8 +88,8 @@ class FingerLockTests: XCTestCase {
     }
     
     func testLoadingDiscreteFiles() {
-        var firstSave = dataModel.savePasswordFile(testFile)
-        var secondSave = dataModel.savePasswordFile(secondTestFile)
+        var firstSave = dataModel.savePasswordFile(testFile, canOverwrite: false)
+        var secondSave = dataModel.savePasswordFile(secondTestFile, canOverwrite: false)
         
         let firstLoad = dataModel.loadPasswordFileByTitle("Testing title")
         let secondLoad = dataModel.loadPasswordFileByTitle("Second Testing title")
@@ -105,7 +105,7 @@ class FingerLockTests: XCTestCase {
     }
     
     func testFileEqualityAfterSaveAndLoad() {
-        var firstSave = dataModel.savePasswordFile(testFile)
+        var firstSave = dataModel.savePasswordFile(testFile, canOverwrite: false)
         let firstLoad = dataModel.loadPasswordFileByTitle("Testing title")
         
         XCTAssertEqual(testFile.title, firstLoad!.title, "the title is not the same after being saved")
@@ -116,13 +116,27 @@ class FingerLockTests: XCTestCase {
     }
     
     func testFileDecryptionAfterSaveAndLoad() {
-        var firstSave = dataModel.savePasswordFile(testFile)
+        var firstSave = dataModel.savePasswordFile(testFile, canOverwrite: false)
         let firstLoad = dataModel.loadPasswordFileByTitle("Testing title")
         
         XCTAssertEqual(encryptor.getDecryptedString(testFile.username), encryptor.getDecryptedString(firstLoad!.username), "the username decrypted is not the same after being saved")
         XCTAssertEqual(encryptor.getDecryptedString(testFile.password), encryptor.getDecryptedString(firstLoad!.password), "the password decrypted is not the same after being saved")
         XCTAssertEqual(encryptor.getDecryptedString(testFile.website), encryptor.getDecryptedString(firstLoad!.website), "the website decrypted is not the same after being saved")
         XCTAssertEqual(encryptor.getDecryptedString(testFile.notes), encryptor.getDecryptedString(firstLoad!.notes), "the notes decrypted are not the same after being saved")
+    }
+    
+    func testFileOverwriteWorksCorrectly() {
+        var firstSave = dataModel.savePasswordFile(testFile, canOverwrite: false)
+        let firstLoad = dataModel.loadPasswordFileByTitle("Testing title")
+        
+        let midUsername = firstLoad?.username
+        firstLoad?.username = "secondUsernameTest"
+        var secondSave = dataModel.savePasswordFile(firstLoad!, canOverwrite: true)
+        var secondLoad = dataModel.loadPasswordFileByTitle("Testing title")
+        
+        XCTAssertNotEqual(testFile.username, secondLoad!.username, "the username is not being overwritten during the second save")
+        XCTAssertEqual(testFile.title, secondLoad!.title, "something is happening to the title of the file during overwriting")
+        XCTAssertEqual(testFile.fileID, secondLoad!.fileID, "file ID is being changed during overwrite")
     }
     
 }
