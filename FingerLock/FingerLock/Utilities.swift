@@ -37,4 +37,11 @@ class Utilities {
             return immutableString
         }
     }
+    
+    class func getDuplicateFileAlert() -> UIAlertController {
+        let alert = UIAlertController(title: "Duplicate File", message: "Please use a different title - this one is already being used.", preferredStyle: .Alert)
+        let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alert.addAction(action)
+        return alert
+    }
 }
