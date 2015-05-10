@@ -111,15 +111,11 @@ class PasswordTableViewController: UITableViewController, PasswordDetailViewCont
             tableView.reloadData()
             controller.dismissViewControllerAnimated(true, completion: nil)
         } else {
-            let alert = UIAlertController(title: "Duplicate File", message: "Please use a different title - this one is already being used.", preferredStyle: .Alert)
-            let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
-            alert.addAction(action)
-            controller.presentViewController(alert, animated: true, completion: nil)
+            controller.presentViewController(Utilities.getDuplicateFileAlert(), animated: true, completion: nil)
         }
     }
     
     func passwordDetailViewController(controller: PasswordDetailTableViewController, updatedPasswordFile passwordFile: PasswordFile) {
-        dataModel.removeFileByID(passwordFile.fileID)
         dataModel.savePasswordFile(passwordFile, canOverwrite: true)
         fileTitles = dataModel.loadAllTitles()
         tableView.reloadData()
