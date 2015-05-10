@@ -82,12 +82,6 @@ class AuthController: UIViewController {
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "infoShow" {
-        
-        }
-    }
-    
     //MARK: IBAction functions
     
     @IBAction func logoTapped() {
