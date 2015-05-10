@@ -57,6 +57,17 @@ class DataModel {
         return nil
     }
     
+    func loadPasswordFileByID(fileID: String) -> PasswordFile? {
+        let allFiles = loadAllPasswords()
+        var returnFile = PasswordFile?()
+        for file in allFiles {
+            if file.fileID == fileID {
+                return file
+            }
+        }
+        return nil
+    }
+    
     func saveAllPasswords(allFiles: [PasswordFile]) {
         let data = NSMutableData()
         let archiver = NSKeyedArchiver(forWritingWithMutableData: data)
@@ -68,9 +79,12 @@ class DataModel {
     func savePasswordFile(fileToSave: PasswordFile, canOverwrite: Bool) -> Bool {
         let originalCount = loadAllTitles().count
         var willOverwrite = false
-        if loadPasswordFileByTitle(fileToSave.title) != nil {
+        if loadPasswordFileByTitle(fileToSave.title) != nil && canOverwrite == false {
+            return false
+        }
+        if loadPasswordFileByID(fileToSave.fileID) != nil {
             if canOverwrite {
-                removeFileByTitle(fileToSave.title)
+                removeFileByID(fileToSave.fileID)
                 willOverwrite = true
             } else {
                 return false

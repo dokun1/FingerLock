@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PasswordFile: NSObject, Printable {
+class PasswordFile: NSObject, Printable, NSCopying {
     var title = ""
     var username = ""
     var password  = ""
@@ -16,7 +16,7 @@ class PasswordFile: NSObject, Printable {
     var notes = ""
     var fileID = ""
     
-    override init() {
+    required override init() {
         super.init()
     }
     
@@ -37,5 +37,16 @@ class PasswordFile: NSObject, Printable {
         aCoder.encodeObject(website, forKey:"Website")
         aCoder.encodeObject(notes, forKey:"Notes")
         aCoder.encodeObject(fileID, forKey:"FileID")
+    }
+    
+    func copyWithZone(zone: NSZone) -> AnyObject {
+        var copyInstance = self.dynamicType()
+        copyInstance.fileID = self.fileID
+        copyInstance.title = self.title
+        copyInstance.username = self.username
+        copyInstance.password = self.password
+        copyInstance.website = self.website
+        copyInstance.notes = self.notes
+        return copyInstance
     }
 }

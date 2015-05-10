@@ -18,7 +18,7 @@ protocol PasswordDetailViewControllerDelegate: class {
 class PasswordDetailTableViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate {
     var isForEditing = false
     var currentFile: PasswordFile!
-    var fileTitleForDiff: String!
+    var fileToDiff: PasswordFile!
     
     let dataModel = DataModel()
     let encryptor = Encryptor()
@@ -37,7 +37,7 @@ class PasswordDetailTableViewController: UITableViewController, UITextFieldDeleg
         if isForEditing {
             title = "Edit Password"
             setFields()
-            fileTitleForDiff = currentFile.title.copy() as! String
+            fileToDiff = currentFile.copy() as! PasswordFile
         } else {
             title = "Add Password"
             currentFile = PasswordFile()
@@ -52,20 +52,21 @@ class PasswordDetailTableViewController: UITableViewController, UITextFieldDeleg
             self.presentViewController(alert, animated: true, completion: nil)
         } else {
             if (isForEditing) { // are we editing an old file?
-                if fileTitleForDiff == currentFile.title { // if the file title didnt change, just update it.
-                    delegate?.passwordDetailViewController(self, updatedPasswordFile: currentFile)
-                } else { // if the file title changed, check to see if we might be overwriting
-                    if dataModel.loadPasswordFileByTitle(currentFile.title) == nil {
-                        delegate?.passwordDetailViewController(self, updatedPasswordFile: currentFile)
-                    } else {
-                        let alert = UIAlertController(title: "Duplicate File", message: "Please use a different title - this one is already being used.", preferredStyle: .Alert)
-                        let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
-                        alert.addAction(action)
-                        presentViewController(alert, animated: true, completion: nil)
-                    }
-                }
+                handleSavingPasswordDuringEdit()
             } else {
                 delegate?.passwordDetailViewController(self, addedPasswordFile: currentFile)
+            }
+        }
+    }
+    
+    func handleSavingPasswordDuringEdit() {
+        if fileToDiff.title == currentFile.title { // if the file title didnt change, just update it.
+            delegate?.passwordDetailViewController(self, updatedPasswordFile: currentFile)
+        } else { // if the file title changed, check to see if we might be overwriting
+            if dataModel.loadPasswordFileByTitle(currentFile.title) == nil {
+                delegate?.passwordDetailViewController(self, updatedPasswordFile: currentFile)
+            } else {
+                presentViewController(Utilities.getDuplicateFileAlert(), animated: true, completion: nil)
             }
         }
     }

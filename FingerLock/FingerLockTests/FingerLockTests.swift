@@ -10,7 +10,6 @@ import UIKit
 import XCTest
 
 class FingerLockTests: XCTestCase {
-    
     let dataModel = DataModel()
     let encryptor = Encryptor()
     let testFile = PasswordFile()
@@ -137,6 +136,23 @@ class FingerLockTests: XCTestCase {
         XCTAssertNotEqual(testFile.username, secondLoad!.username, "the username is not being overwritten during the second save")
         XCTAssertEqual(testFile.title, secondLoad!.title, "something is happening to the title of the file during overwriting")
         XCTAssertEqual(testFile.fileID, secondLoad!.fileID, "file ID is being changed during overwrite")
+        XCTAssertEqual(dataModel.loadAllTitles().count, 1, "there should only be one file saved to the array right now")
     }
     
+    func testFileOverwriteWithNewTitleWorksCorrectly() {
+        var firstSave = dataModel.savePasswordFile(testFile, canOverwrite: false)
+        let firstLoad = dataModel.loadPasswordFileByTitle("Testing title")
+        
+        let midTitle = firstLoad?.title
+        firstLoad?.title = "new testing title"
+        var secondSave = dataModel.savePasswordFile(firstLoad!, canOverwrite: true)
+        var secondLoad = dataModel.loadPasswordFileByTitle("new testing title")
+        var nonexistentLoad = dataModel.loadPasswordFileByTitle(midTitle!)
+        
+        XCTAssertNotEqual(testFile.title, secondLoad!.title, "the titles should be different")
+        XCTAssertNil(nonexistentLoad, "you should not be able to load a file that does not exist")
+        XCTAssertEqual(firstLoad!.fileID, secondLoad!.fileID, "the file id for both loads should be the same no matter what other attributes changed")
+        XCTAssertEqual(testFile.fileID, secondLoad!.fileID, "the file id for both loads should be the same no matter what other attributes changed")
+        XCTAssertEqual(dataModel.loadAllTitles().count, 1, "there should only be one file saved to the array right now")
+    }
 }
