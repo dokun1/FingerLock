@@ -1,4 +1,3 @@
 language: objective-c
- 
-script:
-- xcodebuild -project FingerLock/FingerLock.xcodeproj -scheme FingerLock -destination 'platform=iOS Simulator,name=iPhone 6,OS=8.1'
+
+script: xcodebuild -project FingerLock/FingerLock.xcodeproj -scheme FingerLock -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
