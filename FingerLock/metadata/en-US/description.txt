@@ -1,0 +1,7 @@
+FingerLock is a simple way to keep track of passwords and other information that you think is important to you.
+
+FingerLock does not allow you to share any of these passwords with anyone else, and all data that you save is scrambled and encrypted, so you don't have to worry about anyone else getting a hold of your information.
+
+FingerLock will not work on any iPhone or iPad that does not support TouchID.
+
+Feel free to contact me with any questions or feedback you might have at david@okun.io! Thanks for downloading!!

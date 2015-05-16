@@ -16,8 +16,7 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
-*/FingerLock/FingerLock/Encryptor.swift
-*/FingerLock/Crashlytics.framework/
+*FingerLock/Crashlytics.framework
 
 # CocoaPods
 #
