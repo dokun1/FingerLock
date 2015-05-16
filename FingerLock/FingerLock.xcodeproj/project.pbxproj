@@ -17,6 +17,7 @@
 		503AF5B91A7FF88C006BC4BC /* FingerLockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503AF5B81A7FF88C006BC4BC /* FingerLockTests.swift */; };
 		503AF5C51A7FFE35006BC4BC /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503AF5C41A7FFE35006BC4BC /* AuthController.swift */; };
 		503AF5C71A7FFF46006BC4BC /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503AF5C61A7FFF46006BC4BC /* LocalAuthentication.framework */; };
+		5057A9BF1B06766600E64623 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5057A9BE1B06766600E64623 /* Settings.bundle */; };
 		506317371AF4F74800EDB0F5 /* PasswordFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5017181A1A80749100A4F90A /* PasswordFile.swift */; };
 		506317381AF4F74B00EDB0F5 /* Encryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5017181D1A80798500A4F90A /* Encryptor.swift */; };
 		506317391AF4F74E00EDB0F5 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BC07FD1AD15DBA00F231F6 /* DataModel.swift */; };
@@ -54,6 +55,7 @@
 		503AF5B81A7FF88C006BC4BC /* FingerLockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerLockTests.swift; sourceTree = "<group>"; };
 		503AF5C41A7FFE35006BC4BC /* AuthController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
 		503AF5C61A7FFF46006BC4BC /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		5057A9BE1B06766600E64623 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		507B86D41AFF76060044806A /* InfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoController.swift; sourceTree = "<group>"; };
 		50BC07FB1AD1523500F231F6 /* PasswordDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordDetailTableViewController.swift; sourceTree = "<group>"; };
 		50BC07FD1AD15DBA00F231F6 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				50BC07FD1AD15DBA00F231F6 /* DataModel.swift */,
 				50BC07FF1AD1998900F231F6 /* Utilities.swift */,
 				503AF5A61A7FF88C006BC4BC /* Main.storyboard */,
+				5057A9BE1B06766600E64623 /* Settings.bundle */,
 				503AF5A91A7FF88C006BC4BC /* Images.xcassets */,
 				503AF5AB1A7FF88C006BC4BC /* LaunchScreen.xib */,
 				503AF5A01A7FF88C006BC4BC /* Supporting Files */,
@@ -244,6 +247,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5057A9BF1B06766600E64623 /* Settings.bundle in Resources */,
 				503AF5A81A7FF88C006BC4BC /* Main.storyboard in Resources */,
 				503AF5AD1A7FF88C006BC4BC /* LaunchScreen.xib in Resources */,
 				503AF5AA1A7FF88C006BC4BC /* Images.xcassets in Resources */,

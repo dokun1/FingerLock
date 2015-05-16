@@ -43,21 +43,7 @@ class PasswordDetailTableViewController: UITableViewController, UITextFieldDeleg
             currentFile = PasswordFile()
         }
     }
-    
-    @IBAction func savePassword() {
-        if !checkFields() { // first check to make sure all the fields are filled out
-            let alert = UIAlertController(title: "Incomplete", message: "Sorry, you need to fill out every field to save this password.", preferredStyle: .Alert)
-            let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
-            alert.addAction(action)
-            self.presentViewController(alert, animated: true, completion: nil)
-        } else {
-            if (isForEditing) { // are we editing an old file?
-                handleSavingPasswordDuringEdit()
-            } else {
-                delegate?.passwordDetailViewController(self, addedPasswordFile: currentFile)
-            }
-        }
-    }
+
     
     func handleSavingPasswordDuringEdit() {
         if fileToDiff.title == currentFile.title { // if the file title didnt change, just update it.
@@ -68,25 +54,6 @@ class PasswordDetailTableViewController: UITableViewController, UITextFieldDeleg
             } else {
                 presentViewController(Utilities.getDuplicateFileAlert(), animated: true, completion: nil)
             }
-        }
-    }
-    
-    @IBAction func cancelButtonTapped() {
-        delegate?.passwordDetailViewControllerDidCancel(self)
-    }
-    
-    @IBAction func removeButtonTapped() {
-        if isForEditing == true {
-            let alert = UIAlertController(title: "Warning", message: "Are you sure you want to permanently delete this password?", preferredStyle: .Alert)
-            let cancelAction = UIAlertAction(title: "No", style: .Default, handler: nil)
-            let removeAction = UIAlertAction(title: "Yes", style: .Default) { (_) -> Void in
-                self.attemptRemoval()
-            }
-            alert.addAction(cancelAction)
-            alert.addAction(removeAction)
-            presentViewController(alert, animated: true, completion: nil)
-        } else {
-            delegate?.passwordDetailViewControllerDidCancel(self)
         }
     }
     
@@ -136,6 +103,48 @@ class PasswordDetailTableViewController: UITableViewController, UITextFieldDeleg
         notesView.text = encryptor.getDecryptedString(currentFile.notes)
     }
     
+    // MARK: IBAction Methods
+    
+    @IBAction func randomizePassword() {
+        let newPassword = Utilities.generateRandomStringOfLength(NSUserDefaults.standardUserDefaults().integerForKey("randomPasswordLength"), shouldBeUnique: false)
+        passwordField.text = newPassword
+        updateCurrentFile()
+    }
+    
+    @IBAction func savePassword() {
+        if !checkFields() { // first check to make sure all the fields are filled out
+            let alert = UIAlertController(title: "Incomplete", message: "Sorry, you need to fill out every field to save this password.", preferredStyle: .Alert)
+            let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            alert.addAction(action)
+            self.presentViewController(alert, animated: true, completion: nil)
+        } else {
+            if (isForEditing) { // are we editing an old file?
+                handleSavingPasswordDuringEdit()
+            } else {
+                delegate?.passwordDetailViewController(self, addedPasswordFile: currentFile)
+            }
+        }
+    }
+    
+    @IBAction func cancelButtonTapped() {
+        delegate?.passwordDetailViewControllerDidCancel(self)
+    }
+    
+    @IBAction func removeButtonTapped() {
+        if isForEditing == true {
+            let alert = UIAlertController(title: "Warning", message: "Are you sure you want to permanently delete this password?", preferredStyle: .Alert)
+            let cancelAction = UIAlertAction(title: "No", style: .Default, handler: nil)
+            let removeAction = UIAlertAction(title: "Yes", style: .Default) { (_) -> Void in
+                self.attemptRemoval()
+            }
+            alert.addAction(cancelAction)
+            alert.addAction(removeAction)
+            presentViewController(alert, animated: true, completion: nil)
+        } else {
+            delegate?.passwordDetailViewControllerDidCancel(self)
+        }
+    }
+    
     // MARK: UITextFieldDelegate Methods
     
     func textFieldDidEndEditing(textField: UITextField) {
@@ -153,6 +162,22 @@ class PasswordDetailTableViewController: UITableViewController, UITextFieldDeleg
             notesView.becomeFirstResponder()
         }
         return true
+    }
+    
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        if textField == websiteField && currentFile.website.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()) == "" {
+            websiteField.text = "http://"
+        }
+        return true
+    }
+    
+    override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
+        if !NSUserDefaults.standardUserDefaults().boolForKey("copyAndPasteEnabled") {
+            NSOperationQueue.mainQueue().addOperationWithBlock { () -> Void in
+                UIMenuController.sharedMenuController().setMenuVisible(false, animated: false)
+            }
+        }
+        return super.canPerformAction(action, withSender: sender)
     }
     
     // MARK: UITextViewDelegate Methods

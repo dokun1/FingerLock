@@ -97,12 +97,6 @@ class FingerLockTests: XCTestCase {
         XCTAssertNotEqual(firstLoad!.title, secondLoad!.title, "the titles are the same, and the loading mechanism is not working")
     }
     
-    func testAttemptingToLoadNonexistentFile() {
-        let loadFile = dataModel.loadPasswordFileByTitle("nonexistent file")
-        
-        XCTAssertNil(loadFile, "something is being loaded in place of a non existent file")
-    }
-    
     func testFileEqualityAfterSaveAndLoad() {
         var firstSave = dataModel.savePasswordFile(testFile, canOverwrite: false)
         let firstLoad = dataModel.loadPasswordFileByTitle("Testing title")
