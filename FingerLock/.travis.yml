@@ -1,4 +1,0 @@
-language: objective-c
- 
-script:
-- xcodebuild build -scheme FingerLock -destination 'platform=iOS Simulator,name=iPhone 6,OS=8.3'
