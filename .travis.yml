@@ -1,3 +1,1 @@
 language: objective-c
-
-script: xcodebuild -project FingerLock/FingerLock.xcodeproj -scheme FingerLock -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
