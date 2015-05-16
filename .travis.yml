@@ -1,5 +1,4 @@
 language: objective-c
  
 script:
-- cd FingerLock/
-- xcodebuild build -scheme FingerLock -destination 'platform=iOS Simulator,name=iPhone 6,OS=8.1'
+- xcodebuild -project FingerLock/FingerLock.xcodeproj -scheme FingerLock -destination 'platform=iOS Simulator,name=iPhone 6,OS=8.1'
