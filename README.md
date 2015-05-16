@@ -1,5 +1,7 @@
 # FingerLock
 
+[![Build Status](https://travis-ci.org/dokun1/FingerLock.svg?branch=develop)](https://travis-ci.org/dokun1/FingerLock)
+
 ![FingerLock logo](http://okun.io/appIcon228.png)
 
 ## Summary
