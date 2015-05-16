@@ -20,7 +20,11 @@ class AuthController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        authorize()
+        if UIDevice.currentDevice().model == "iPhone Simulator" {
+            successfulAuthentication()
+        } else {
+            authorize()
+        }
     }
     
     //MARK: Authorization functions
@@ -31,13 +35,7 @@ class AuthController: UIViewController {
             var error: NSError?
             [context.evaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, localizedReason: "Authenticate", reply: { (success: Bool, evalPolicyError: NSError?) -> Void in
                 if success {
-                    if NSUserDefaults.standardUserDefaults().boolForKey("firstTime") == false {
-                        self.firstTimeSetup()
-                    } else {
-                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            self.self.moveToPasswords()
-                        })
-                    }
+                    self.successfulAuthentication()
                     return
                 } else {
                     let alert = UIAlertController(title: "Error", message: "Could not authenticate your fingerprint. Tap the logo to try again.", preferredStyle: .Alert)
@@ -48,6 +46,16 @@ class AuthController: UIViewController {
         } else {
             let alert = UIAlertController(title: "Incompatible", message: "Sorry, but you need a device with TouchID to use this app!", preferredStyle: .Alert)
             self.presentViewController(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func successfulAuthentication() {
+        if NSUserDefaults.standardUserDefaults().boolForKey("firstTime") == false {
+            self.firstTimeSetup()
+        } else {
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.self.moveToPasswords()
+            })
         }
     }
     
