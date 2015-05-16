@@ -1,0 +1,11 @@
+First, thank you for your support! I have been pleasantly surprised by people wanting to use this more frequently. Please keep letting me know how I can improve this for you!
+
++ A good chef always eats his own cooking, right? I had a lot of passwords saved up and I thought it would be a bit easier to be able to search for them by name. So I added that.
+
++ Some people wanted the ability to copy and paste things. I made it an option in the settings of your iPhone - it’s turned off by default.
+
++ Also, people started asking for the ability to generate random passwords. There’s a button for that now, and in the settings, you can change how big that random password can be.
+
++ Best of all, a shiny new button to see info about the app.
+
+Thanks again!!

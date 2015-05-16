@@ -20,9 +20,7 @@ class AuthController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        if UIDevice.currentDevice().model == "iPhone Simulator" {
-            successfulAuthentication()
-        } else {
+        if UIDevice.currentDevice().model != "iPhone Simulator" && UIDevice.currentDevice().model != "iPad Simulator" {
             authorize()
         }
     }
@@ -93,6 +91,10 @@ class AuthController: UIViewController {
     //MARK: IBAction functions
     
     @IBAction func logoTapped() {
-        authorize()
+        if UIDevice.currentDevice().model != "iPhone Simulator" && UIDevice.currentDevice().model != "iPad Simulator"  {
+            authorize()
+        } else {
+            successfulAuthentication()
+        }
     }
 }
