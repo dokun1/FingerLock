@@ -43,7 +43,6 @@ class PasswordDetailTableViewController: UITableViewController, UITextFieldDeleg
             currentFile = PasswordFile()
         }
     }
-
     
     func handleSavingPasswordDuringEdit() {
         if fileToDiff.title == currentFile.title { // if the file title didnt change, just update it.

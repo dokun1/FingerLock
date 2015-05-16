@@ -48,9 +48,4 @@ class Utilities {
         alert.addAction(action)
         return alert
     }
-    
-    class func getCacheLock() -> NSLock { // prevent race conditions by disallowing the file system from being corrupted/changed during saving/loading
-        let cacheLock = NSLock()
-        return cacheLock
-    }
 }

@@ -24,12 +24,13 @@ class DataModel {
     func loadAllPasswords() -> [PasswordFile] {
         let path = dataFilePath()
         if NSFileManager.defaultManager().fileExistsAtPath(path) {
-            Utilities.getCacheLock().lock()
+            let cacheLock = NSLock()
+            cacheLock.lock()
             if let data = NSData(contentsOfFile: path) {
                 let unarchiver = NSKeyedUnarchiver(forReadingWithData: data)
                 let passwordFiles = unarchiver.decodeObjectForKey(passwordsKey) as! [PasswordFile]
                 unarchiver.finishDecoding()
-                Utilities.getCacheLock().unlock()
+                cacheLock.unlock()
                 let sortedFiles = sortPasswordFiles(passwordFiles)
                 return sortedFiles
             }
@@ -71,13 +72,14 @@ class DataModel {
     }
     
     func saveAllPasswords(allFiles: [PasswordFile]) {
-        Utilities.getCacheLock().lock()
+        let cacheLock = NSLock()
+        cacheLock.lock()
         let data = NSMutableData()
         let archiver = NSKeyedArchiver(forWritingWithMutableData: data)
         archiver.encodeObject(allFiles, forKey: passwordsKey)
         archiver.finishEncoding()
         data.writeToFile(dataFilePath(), atomically: true)
-        Utilities.getCacheLock().unlock()
+        cacheLock.unlock()
     }
     
     func savePasswordFile(fileToSave: PasswordFile, canOverwrite: Bool) -> Bool {
