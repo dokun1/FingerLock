@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         UIBarButtonItem.appearance().tintColor = UIColor.whiteColor()
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        UISearchBar.appearance().setBackgroundImage(UIImage(named: "searchBarBackground"), forBarPosition: .Any, barMetrics: .Default)
     }
 
     func applicationWillResignActive(application: UIApplication) {

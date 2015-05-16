@@ -10,7 +10,7 @@ import UIKit
 
 class Utilities {
     
-    class func generateRandomStringOfLength(length: Int) -> String {
+    class func generateRandomStringOfLength(length: Int, shouldBeUnique unique: Bool) -> String {
         let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         var randomString : NSMutableString = NSMutableString(capacity: 12)
         for (var i = 0; i < length; i++){
@@ -28,12 +28,16 @@ class Utilities {
             stringArray = usedRandomStrings as! [String]
         }
         let immutableString = randomString as NSString as String
-        if contains(stringArray, immutableString) {
-            return generateRandomStringOfLength(length)
+        if unique {
+            if contains(stringArray, immutableString) {
+                return generateRandomStringOfLength(length, shouldBeUnique: true)
+            } else {
+                stringArray.append(immutableString)
+                defaults.setObject(stringArray, forKey: "usedStrings")
+                defaults.synchronize()
+                return immutableString
+            }
         } else {
-            stringArray.append(immutableString)
-            defaults.setObject(stringArray, forKey: "usedStrings")
-            defaults.synchronize()
             return immutableString
         }
     }
