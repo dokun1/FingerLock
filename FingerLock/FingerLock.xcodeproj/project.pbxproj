@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		501718171A80746500A4F90A /* PasswordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501718161A80746500A4F90A /* PasswordTableViewController.swift */; };
 		5017181B1A80749100A4F90A /* PasswordFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5017181A1A80749100A4F90A /* PasswordFile.swift */; };
-		5017181E1A80798500A4F90A /* Encryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5017181D1A80798500A4F90A /* Encryptor.swift */; };
 		503AF5A31A7FF88C006BC4BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503AF5A21A7FF88C006BC4BC /* AppDelegate.swift */; };
 		503AF5A81A7FF88C006BC4BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 503AF5A61A7FF88C006BC4BC /* Main.storyboard */; };
 		503AF5AA1A7FF88C006BC4BC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 503AF5A91A7FF88C006BC4BC /* Images.xcassets */; };
@@ -17,9 +16,10 @@
 		503AF5B91A7FF88C006BC4BC /* FingerLockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503AF5B81A7FF88C006BC4BC /* FingerLockTests.swift */; };
 		503AF5C51A7FFE35006BC4BC /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503AF5C41A7FFE35006BC4BC /* AuthController.swift */; };
 		503AF5C71A7FFF46006BC4BC /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503AF5C61A7FFF46006BC4BC /* LocalAuthentication.framework */; };
+		503D2A841B088E400000B0AE /* Encryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D2A831B088E400000B0AE /* Encryptor.swift */; };
+		503D2A851B088E8D0000B0AE /* Encryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503D2A831B088E400000B0AE /* Encryptor.swift */; };
 		5057A9BF1B06766600E64623 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5057A9BE1B06766600E64623 /* Settings.bundle */; };
 		506317371AF4F74800EDB0F5 /* PasswordFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5017181A1A80749100A4F90A /* PasswordFile.swift */; };
-		506317381AF4F74B00EDB0F5 /* Encryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5017181D1A80798500A4F90A /* Encryptor.swift */; };
 		506317391AF4F74E00EDB0F5 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BC07FD1AD15DBA00F231F6 /* DataModel.swift */; };
 		5063173A1AF4F75100EDB0F5 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BC07FF1AD1998900F231F6 /* Utilities.swift */; };
 		507B86D51AFF76060044806A /* InfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507B86D41AFF76060044806A /* InfoController.swift */; };
@@ -43,7 +43,6 @@
 /* Begin PBXFileReference section */
 		501718161A80746500A4F90A /* PasswordTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordTableViewController.swift; sourceTree = "<group>"; };
 		5017181A1A80749100A4F90A /* PasswordFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordFile.swift; sourceTree = "<group>"; };
-		5017181D1A80798500A4F90A /* Encryptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encryptor.swift; sourceTree = "<group>"; };
 		503AF59D1A7FF88C006BC4BC /* FingerLock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FingerLock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		503AF5A11A7FF88C006BC4BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		503AF5A21A7FF88C006BC4BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +54,7 @@
 		503AF5B81A7FF88C006BC4BC /* FingerLockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerLockTests.swift; sourceTree = "<group>"; };
 		503AF5C41A7FFE35006BC4BC /* AuthController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
 		503AF5C61A7FFF46006BC4BC /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		503D2A831B088E400000B0AE /* Encryptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encryptor.swift; sourceTree = "<group>"; };
 		5057A9BE1B06766600E64623 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		507B86D41AFF76060044806A /* InfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoController.swift; sourceTree = "<group>"; };
 		50BC07FB1AD1523500F231F6 /* PasswordDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordDetailTableViewController.swift; sourceTree = "<group>"; };
@@ -121,7 +121,7 @@
 				503AF5A21A7FF88C006BC4BC /* AppDelegate.swift */,
 				5017181C1A80749700A4F90A /* Controllers */,
 				5017181A1A80749100A4F90A /* PasswordFile.swift */,
-				5017181D1A80798500A4F90A /* Encryptor.swift */,
+				503D2A831B088E400000B0AE /* Encryptor.swift */,
 				50BC07FD1AD15DBA00F231F6 /* DataModel.swift */,
 				50BC07FF1AD1998900F231F6 /* Utilities.swift */,
 				503AF5A61A7FF88C006BC4BC /* Main.storyboard */,
@@ -284,8 +284,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5017181E1A80798500A4F90A /* Encryptor.swift in Sources */,
 				503AF5C51A7FFE35006BC4BC /* AuthController.swift in Sources */,
+				503D2A841B088E400000B0AE /* Encryptor.swift in Sources */,
 				507B86D51AFF76060044806A /* InfoController.swift in Sources */,
 				50BC07FC1AD1523500F231F6 /* PasswordDetailTableViewController.swift in Sources */,
 				503AF5A31A7FF88C006BC4BC /* AppDelegate.swift in Sources */,
@@ -302,9 +302,9 @@
 			files = (
 				506317371AF4F74800EDB0F5 /* PasswordFile.swift in Sources */,
 				506317391AF4F74E00EDB0F5 /* DataModel.swift in Sources */,
-				506317381AF4F74B00EDB0F5 /* Encryptor.swift in Sources */,
 				5063173A1AF4F75100EDB0F5 /* Utilities.swift in Sources */,
 				503AF5B91A7FF88C006BC4BC /* FingerLockTests.swift in Sources */,
+				503D2A851B088E8D0000B0AE /* Encryptor.swift in Sources */,
 				507B86D61AFF76060044806A /* InfoController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -424,8 +424,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: David Okun (RQ632LL2X3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: David Okun (RQ632LL2X3)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -434,7 +434,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e05b3639-b1be-4854-94f6-fb93e891a987";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -443,8 +443,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: David Okun (RQ632LL2X3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: David Okun (RQ632LL2X3)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -453,7 +453,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e05b3639-b1be-4854-94f6-fb93e891a987";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Release;

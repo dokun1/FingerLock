@@ -105,6 +105,10 @@ class PasswordDetailTableViewController: UITableViewController, UITextFieldDeleg
     // MARK: IBAction Methods
     
     @IBAction func randomizePassword() {
+        if NSUserDefaults.standardUserDefaults().integerForKey("randomPasswordLength") == 0 {
+            NSUserDefaults.standardUserDefaults().setInteger(14, forKey: "randomPasswordLength")
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
         let newPassword = Utilities.generateRandomStringOfLength(NSUserDefaults.standardUserDefaults().integerForKey("randomPasswordLength"), shouldBeUnique: false)
         passwordField.text = newPassword
         updateCurrentFile()
