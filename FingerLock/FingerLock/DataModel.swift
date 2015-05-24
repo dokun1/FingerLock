@@ -11,13 +11,14 @@ import UIKit
 class DataModel {
     let passwordsKey = "FingerLockPasswords"
     let encryptor = Encryptor()
+//    let cloud = CloudModel()
     
-    func documentsDirectory() -> String {
+    private func documentsDirectory() -> String {
         let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true) as! [String]
         return paths[0]
     }
     
-    func dataFilePath() -> String {
+    private func dataFilePath() -> String {
         return documentsDirectory().stringByAppendingPathComponent("FingerLockPasswords.plist")
     }
     
@@ -60,7 +61,7 @@ class DataModel {
         return nil
     }
     
-    func loadPasswordFileByID(fileID: String) -> PasswordFile? {
+    private func loadPasswordFileByID(fileID: String) -> PasswordFile? {
         let allFiles = loadAllPasswords()
         var returnFile = PasswordFile?()
         for file in allFiles {
@@ -125,7 +126,7 @@ class DataModel {
         saveAllPasswords(newFileArray)
     }
     
-    func removeFileByID(idToRemove: String) {
+    private func removeFileByID(idToRemove: String) {
         var allFiles = loadAllPasswords()
         var newFileArray = [PasswordFile]()
         var removingFile: PasswordFile?
@@ -137,7 +138,7 @@ class DataModel {
         saveAllPasswords(newFileArray)
     }
     
-    func sortPasswordFiles(allFiles: [PasswordFile]) -> [PasswordFile]{
+    private func sortPasswordFiles(allFiles: [PasswordFile]) -> [PasswordFile]{
         var allFilesCopy = allFiles
         allFilesCopy.sort({
             file1, file2 in return file1.title.localizedStandardCompare(file2.title) == NSComparisonResult.OrderedAscending
