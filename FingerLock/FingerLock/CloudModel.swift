@@ -24,10 +24,24 @@ class CloudModel {
     }
     
     func currentUserHasPermission() -> Bool {
+        sampleBlockReturnMethodWithParameter("hello", success: { (returnedString) -> (Void) in
+            
+        }) { (error) -> (Void) in
+            
+        }
         return true
     }
     
-    func syncAllPasswords(completion : (success : Bool, error : NSError!) -> ()) {
+    func syncAllPasswords(completion : (success : Bool, error : NSError!) -> (Void)) {
         completion(success: true, error: nil)
+    }
+    
+    func sampleBlockReturnMethodWithParameter(inputParam: String, success: (returnedString: String) -> (Void), failure: (error: NSError) -> (Void)) {
+        if inputParam.isEmpty {
+            success(returnedString: inputParam)
+        } else {
+            var error = NSError()
+            failure(error: error)
+        }
     }
 }

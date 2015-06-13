@@ -11,7 +11,7 @@ import UIKit
 class DataModel {
     let passwordsKey = "FingerLockPasswords"
     let encryptor = Encryptor()
-//    let cloud = CloudModel()
+//    let cloud: CloudModel = CloudModel()
     
     private func documentsDirectory() -> String {
         let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true) as! [String]
