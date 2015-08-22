@@ -24,10 +24,17 @@
 		5063173A1AF4F75100EDB0F5 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BC07FF1AD1998900F231F6 /* Utilities.swift */; };
 		507B86D51AFF76060044806A /* InfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507B86D41AFF76060044806A /* InfoController.swift */; };
 		507B86D61AFF76060044806A /* InfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507B86D41AFF76060044806A /* InfoController.swift */; };
+		50907D571B2C48DB00C9F5FF /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50907D561B2C48DB00C9F5FF /* Crashlytics.framework */; };
+		50907D741B2C499B00C9F5FF /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50907D731B2C499B00C9F5FF /* ActionViewController.swift */; };
+		50907D761B2C499B00C9F5FF /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50907D751B2C499B00C9F5FF /* MainInterface.storyboard */; };
+		50907D791B2C499B00C9F5FF /* FingerLock Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 50907D6F1B2C499B00C9F5FF /* FingerLock Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		50907D7E1B2C4B9900C9F5FF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 503AF5A91A7FF88C006BC4BC /* Images.xcassets */; };
+		50907D801B2C4F6C00C9F5FF /* GetURL.js in Resources */ = {isa = PBXBuildFile; fileRef = 50907D7F1B2C4F6C00C9F5FF /* GetURL.js */; };
+		50907D811B2C55D000C9F5FF /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BC07FD1AD15DBA00F231F6 /* DataModel.swift */; };
+		50907D831B2C5C2400C9F5FF /* PasswordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50907D821B2C5C2400C9F5FF /* PasswordTableViewController.swift */; };
 		50BC07FC1AD1523500F231F6 /* PasswordDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BC07FB1AD1523500F231F6 /* PasswordDetailTableViewController.swift */; };
 		50BC07FE1AD15DBA00F231F6 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BC07FD1AD15DBA00F231F6 /* DataModel.swift */; };
 		50BC08001AD1998900F231F6 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BC07FF1AD1998900F231F6 /* Utilities.swift */; };
-		50BC080E1AD31C2B00F231F6 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50BC080D1AD31C2B00F231F6 /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +45,28 @@
 			remoteGlobalIDString = 503AF59C1A7FF88C006BC4BC;
 			remoteInfo = FingerLock;
 		};
+		50907D771B2C499B00C9F5FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 503AF5951A7FF88C006BC4BC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 50907D6E1B2C499B00C9F5FF;
+			remoteInfo = "FingerLock Widget";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		50907D661B2C496700C9F5FF /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				50907D791B2C499B00C9F5FF /* FingerLock Widget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		501718161A80746500A4F90A /* PasswordTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordTableViewController.swift; sourceTree = "<group>"; };
@@ -57,10 +85,16 @@
 		503D2A831B088E400000B0AE /* Encryptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encryptor.swift; sourceTree = "<group>"; };
 		5057A9BE1B06766600E64623 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		507B86D41AFF76060044806A /* InfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoController.swift; sourceTree = "<group>"; };
+		50907D561B2C48DB00C9F5FF /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		50907D6F1B2C499B00C9F5FF /* FingerLock Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "FingerLock Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		50907D721B2C499B00C9F5FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50907D731B2C499B00C9F5FF /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
+		50907D751B2C499B00C9F5FF /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		50907D7F1B2C4F6C00C9F5FF /* GetURL.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = GetURL.js; sourceTree = "<group>"; };
+		50907D821B2C5C2400C9F5FF /* PasswordTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordTableViewController.swift; sourceTree = "<group>"; };
 		50BC07FB1AD1523500F231F6 /* PasswordDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordDetailTableViewController.swift; sourceTree = "<group>"; };
 		50BC07FD1AD15DBA00F231F6 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		50BC07FF1AD1998900F231F6 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		50BC080D1AD31C2B00F231F6 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,12 +102,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50BC080E1AD31C2B00F231F6 /* Crashlytics.framework in Frameworks */,
+				50907D571B2C48DB00C9F5FF /* Crashlytics.framework in Frameworks */,
 				503AF5C71A7FFF46006BC4BC /* LocalAuthentication.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		503AF5AF1A7FF88C006BC4BC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50907D6C1B2C499B00C9F5FF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -97,10 +138,9 @@
 		503AF5941A7FF88C006BC4BC = {
 			isa = PBXGroup;
 			children = (
-				503AF5C61A7FFF46006BC4BC /* LocalAuthentication.framework */,
-				50BC080D1AD31C2B00F231F6 /* Crashlytics.framework */,
 				503AF59F1A7FF88C006BC4BC /* FingerLock */,
 				503AF5B51A7FF88C006BC4BC /* FingerLockTests */,
+				50907D701B2C499B00C9F5FF /* FingerLock Widget */,
 				503AF59E1A7FF88C006BC4BC /* Products */,
 				E365DEC1402D37C46F3A8180 /* Frameworks */,
 			);
@@ -111,6 +151,7 @@
 			children = (
 				503AF59D1A7FF88C006BC4BC /* FingerLock.app */,
 				503AF5B21A7FF88C006BC4BC /* FingerLockTests.xctest */,
+				50907D6F1B2C499B00C9F5FF /* FingerLock Widget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -158,9 +199,31 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		50907D701B2C499B00C9F5FF /* FingerLock Widget */ = {
+			isa = PBXGroup;
+			children = (
+				50907D731B2C499B00C9F5FF /* ActionViewController.swift */,
+				50907D821B2C5C2400C9F5FF /* PasswordTableViewController.swift */,
+				50907D7F1B2C4F6C00C9F5FF /* GetURL.js */,
+				50907D751B2C499B00C9F5FF /* MainInterface.storyboard */,
+				50907D711B2C499B00C9F5FF /* Supporting Files */,
+			);
+			path = "FingerLock Widget";
+			sourceTree = "<group>";
+		};
+		50907D711B2C499B00C9F5FF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				50907D721B2C499B00C9F5FF /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		E365DEC1402D37C46F3A8180 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				503AF5C61A7FFF46006BC4BC /* LocalAuthentication.framework */,
+				50907D561B2C48DB00C9F5FF /* Crashlytics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -176,10 +239,12 @@
 				503AF59A1A7FF88C006BC4BC /* Frameworks */,
 				503AF59B1A7FF88C006BC4BC /* Resources */,
 				50BC080C1AD31C1100F231F6 /* ShellScript */,
+				50907D661B2C496700C9F5FF /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				50907D781B2C499B00C9F5FF /* PBXTargetDependency */,
 			);
 			name = FingerLock;
 			productName = FingerLock;
@@ -204,6 +269,23 @@
 			productReference = 503AF5B21A7FF88C006BC4BC /* FingerLockTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		50907D6E1B2C499B00C9F5FF /* FingerLock Widget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50907D7A1B2C499B00C9F5FF /* Build configuration list for PBXNativeTarget "FingerLock Widget" */;
+			buildPhases = (
+				50907D6B1B2C499B00C9F5FF /* Sources */,
+				50907D6C1B2C499B00C9F5FF /* Frameworks */,
+				50907D6D1B2C499B00C9F5FF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "FingerLock Widget";
+			productName = "FingerLock Widget";
+			productReference = 50907D6F1B2C499B00C9F5FF /* FingerLock Widget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -220,6 +302,10 @@
 					503AF5B11A7FF88C006BC4BC = {
 						CreatedOnToolsVersion = 6.1.1;
 						TestTargetID = 503AF59C1A7FF88C006BC4BC;
+					};
+					50907D6E1B2C499B00C9F5FF = {
+						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = RQ632LL2X3;
 					};
 				};
 			};
@@ -238,6 +324,7 @@
 			targets = (
 				503AF59C1A7FF88C006BC4BC /* FingerLock */,
 				503AF5B11A7FF88C006BC4BC /* FingerLockTests */,
+				50907D6E1B2C499B00C9F5FF /* FingerLock Widget */,
 			);
 		};
 /* End PBXProject section */
@@ -258,6 +345,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50907D6D1B2C499B00C9F5FF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50907D761B2C499B00C9F5FF /* MainInterface.storyboard in Resources */,
+				50907D7E1B2C4B9900C9F5FF /* Images.xcassets in Resources */,
+				50907D801B2C4F6C00C9F5FF /* GetURL.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,6 +406,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		50907D6B1B2C499B00C9F5FF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50907D741B2C499B00C9F5FF /* ActionViewController.swift in Sources */,
+				50907D811B2C55D000C9F5FF /* DataModel.swift in Sources */,
+				50907D831B2C5C2400C9F5FF /* PasswordTableViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -316,6 +423,11 @@
 			isa = PBXTargetDependency;
 			target = 503AF59C1A7FF88C006BC4BC /* FingerLock */;
 			targetProxy = 503AF5B31A7FF88C006BC4BC /* PBXContainerItemProxy */;
+		};
+		50907D781B2C499B00C9F5FF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 50907D6E1B2C499B00C9F5FF /* FingerLock Widget */;
+			targetProxy = 50907D771B2C499B00C9F5FF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -492,6 +604,41 @@
 			};
 			name = Release;
 		};
+		50907D7B1B2C499B00C9F5FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "FingerLock Widget/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		50907D7C1B2C499B00C9F5FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "FingerLock Widget/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -521,6 +668,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		50907D7A1B2C499B00C9F5FF /* Build configuration list for PBXNativeTarget "FingerLock Widget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50907D7B1B2C499B00C9F5FF /* Debug */,
+				50907D7C1B2C499B00C9F5FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
