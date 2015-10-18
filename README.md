@@ -1,6 +1,8 @@
 # FingerLock
 
 [![Build Status](https://travis-ci.org/dokun1/FingerLock.svg?branch=develop)](https://travis-ci.org/dokun1/FingerLock)
+[![Twitter: @KauseFx](https://img.shields.io/badge/contact-@dokun24-blue.svg?style=flat)](https://twitter.com/dokun24)
+[![License](http://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/dokun1/FingerLock/blob/master/LICENSE)
 
 ![FingerLock logo](http://okun.io/appIcon228.png)
 
